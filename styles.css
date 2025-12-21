@@ -1,0 +1,281 @@
+/* styles.css */
+
+/* ==================================== */
+/* 1. COLOR PALETTE & FONTS */
+/* ==================================== */
+:root {
+    --color-primary: #8B4513; /* Rich Brown/Cocoa for text */
+    --color-accent: #DAA520; /* Gold/Mustard */
+    --color-light: #FFF8E1; /* Pale Cream/Yellow */
+    --color-background: #FFFFFF;
+    --color-text-dark: #333333;
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Georgia', serif;
+}
+
+/* Base & Typography */
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+}
+h1, h2, h3 {
+    font-family: var(--font-title);
+    color: var(--color-primary);
+}
+
+/* Utility Classes */
+.section-heading {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ==================================== */
+/* 2. GLOBAL ELEMENTS */
+/* ==================================== */
+.page-border-top {
+    height: 15px;
+    background-color: var(--color-accent);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.page-border-bottom {
+    height: 15px;
+    background-color: var(--color-light);
+}
+
+header {
+    background-color: var(--color-background);
+    padding: 9px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-light);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-section h1 {
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li a {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, border-bottom 0.3s;
+    padding-bottom: 5px;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+}
+
+/* Global CTA Button Style */
+.cta-btn {
+    background-color: var(--color-accent);
+    color: var(--color-background) !important;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+}
+
+.cta-btn:hover {
+    background-color: #C5931C;
+    transform: translateY(-2px);
+}
+
+/* Main Content Sections */
+section {
+    padding: 80px 40px;
+    min-height: 70vh;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.hero {
+    background-color: var(--color-light);
+    text-align: center;
+}
+
+/* ==================================== */
+/* PAGE SPECIFIC STYLES */
+/* ==================================== */
+
+/* Menu & Seasonal */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto;
+}
+.menu-item-card {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-light);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+.menu-item-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+.menu-item-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.menu-info {
+    padding: 20px;
+}
+.menu-info h3 {
+    font-size: 1.6rem;
+    margin: 0 0 5px;
+}
+.menu-info .price {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+.menu-info p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 0 15px;
+}
+
+/* About Us */
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.about-content p {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-align: left;
+}
+.signature {
+    font-family: cursive;
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-top: 30px;
+    display: block;
+    text-align: center;
+}
+
+/* Features */
+.feature-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+.feature-card {
+    width: 300px;
+    padding: 30px;
+    border: 2px solid var(--color-light);
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    text-align: center;
+}
+.feature-card:hover {
+    background-color: var(--color-light);
+}
+.feature-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+.icon {
+    font-size: 2.5rem;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+/* Order List / Cart */
+.order-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+    border-collapse: collapse;
+}
+.order-table th, .order-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--color-light);
+    text-align: left;
+}
+.order-table th {
+    background-color: var(--color-accent);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+.order-total {
+    text-align: right;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    padding-top: 20px;
+}
+
+/* Reserve */
+.reservation-form {
+    max-width: 600px;
+    margin: 40px auto;
+    text-align: left;
+    padding: 30px;
+    background-color: var(--color-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.reservation-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin-top: 15px;
+}
+.reservation-form input, .reservation-form select, .reservation-form button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-light);
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-background);
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--color-light);
+    color: #777;
+    font-size: 0.85rem;
+}

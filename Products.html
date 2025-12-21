@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bakery Menu</title>
+    <style>
+        /* Define Elegant Color Palette */
+        :root {
+            --color-rich-brown:  #8B4513; /* Darker brown for main elements, text */
+            --color-warm-gold: #8B4513; /* Classic gold for accents, headers */
+            --color-cream-bg: #FDF7E7; /* Light cream for main background */
+            --color-light-cream: #fbfbf9; /* Slightly lighter cream for item backgrounds */
+            --color-soft-grey:   #8B4513; /* Soft grey for secondary text */
+            --color-dark-text: #333333; /* General dark text */
+            --color-heart-liked: #E57373; /* A soft, elegant red for liked items */
+            --color-button-hover: #7F5E40; /* Slightly lighter brown for button hover */
+            --color-button-gradient-start: #DAA520; /* Gold for button gradient start */
+            --color-button-gradient-end: #2d2717; /* Slightly darker gold for button gradient end */
+            --color-button-gradient-hover-start:  #8B4513; /* Richer brown for button hover gradient */
+            --color-button-gradient-hover-end: #8B4513; /* Even richer brown for button hover gradient */
+            --color-quantity-btn-bg: #E0DED7; /* Muted background for quantity buttons */
+            --color-quantity-btn-hover: #C6C3BC; /* Darker muted background on hover */
+            /* New variable for the thin top banner color (Matches the new image's top strip) */
+            --color-thin-banner:   #8B4513; 
+        }
+
+        /* General Page Styles */
+        body {
+            font-family: "Georgia", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-cream-bg); 
+        }
+
+        /* --- UPDATED HEADER/NAV STYLES --- */
+
+        .top-banner {
+            background-color: var(--color-thin-banner); 
+            height: 15px; /* Increased height to match the new image's thicker strip */
+            width: 100%;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            background-color: var(--color-light-cream);
+            /* Removed box-shadow to match the clean look of the new image */
+            min-height: 80px; /* Ensure space for the logo */
+        }
+
+        .logo {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.8em; /* Slightly larger logo */
+            font-weight: normal; 
+            color: var(--color-rich-brown); /* Keep rich brown for elegant look */
+            margin: 0;
+            padding: 0;
+            flex-grow: 1; /* Pushes nav links to the right */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px; /* Slightly tighter gap */
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--color-dark-text); /* Use dark text for clean look */
+            font-size: 0.95em; /* Slightly smaller font for navigation */
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-warm-gold);
+        }
+
+        .nav-reserve-btn {
+            background-color: var(--color-warm-gold);
+            color: white; /* Changed text to white for better contrast/matching the gold button style */
+            border: 1px solid var(--color-warm-gold); /* Add border for definition */
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Override game-like button styles */
+            position: static;
+            overflow: visible;
+            margin-left: 0;
+            
+            /* Apply the gradient/shadow logic from the original button, but contained */
+            background: linear-gradient(90deg, var(--color-button-gradient-start), var(--color-button-gradient-end));
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4); 
+        }
+
+        .nav-reserve-btn:hover {
+            background: linear-gradient(90deg, var(--color-button-gradient-hover-start), var(--color-button-gradient-hover-end));
+            box-shadow: 0 6px 15px rgba(92, 58, 32, 0.6);
+            color: white;
+        }
+
+        /* Style for LOGIN link */
+        .nav-login {
+            color: var(--color-dark-text);
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            padding: 5px 0;
+            margin-left: 10px;
+        }
+
+        /* --- END UPDATED HEADER/NAV STYLES --- */
+
+        /* The original header in the HTML is now hidden. */
+        .old-header-content {
+            display: none; 
+        }
+
+        header {
+            background-color: transparent; 
+            text-align: center;
+            padding: 0;
+        }
+        
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .menu-item {
+            background-color: var(--color-light-cream);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .menu-item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .menu-item h3 {
+            margin: 10px 0;
+            color: var(--color-rich-brown);
+        }
+        .menu-item p {
+            margin: 5px 0;
+            color: var(--color-soft-grey);
+        }
+        .menu-item .price {
+            font-size: 1.2em;
+            color: var(--color-warm-gold);
+        }
+
+        /* Game-like button effect - Colors adjusted */
+        button {
+            position: relative;
+            background: linear-gradient(90deg, var(--color-button-gradient-start), var(--color-button-gradient-end));
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-left: 6px;
+            font-size: 1em;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 300%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(212, 178, 26, 0.6), transparent);
+            transform: skewX(-25deg);
+            transition: all 0.5s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, var(--color-button-gradient-hover-start), var(--color-button-gradient-hover-end));
+            box-shadow: 0 6px 20px rgba(92, 58, 32, 0.6);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+        /* Cart styles - Colors adjusted */
+        #cart-container {
+            padding: 20px;
+            background-color: var(--color-light-cream);
+            border-top: 2px solid var(--color-warm-gold);
+            display: none; 
+        }
+        #cart-items {
+            margin-bottom: 20px;
+        }
+        .cart-summary {
+            text-align: right;
+        }
+        .cart-summary p {
+            font-size: 1.2em;
+        }
+        .cart-summary #total-price {
+            color: var(--color-rich-brown);
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .cart-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        .cart-item .details {
+            flex: 1;
+        }
+        .item-quantity {
+            font-weight: bold;
+            margin: 0 5px; 
+            color: var(--color-warm-gold);
+        }
+        .quantity-controls button {
+            background: var(--color-quantity-btn-bg);
+            color: var(--color-dark-text);
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            margin: 0 2px;
+            box-shadow: none; 
+            transition: background 0.2s ease;
+        }
+        .quantity-controls button:hover {
+            background: var(--color-quantity-btn-hover);
+        }
+
+        .like-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--color-soft-grey);
+        }
+        .liked {
+            color: var(--color-heart-liked);
+        }
+
+        /* Like Bag Styles - Colors adjusted */
+        #like-bag-container {
+            padding: 20px;
+            background-color: var(--color-light-cream);
+            border-top: 2px solid var(--color-warm-gold);
+        }
+        #like-bag-items {
+            margin-bottom: 20px;
+        }
+        .like-bag-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .like-bag-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            margin-right: 10px;
+        }
+        .like-bag-item .details {
+            flex: 1;
+        }
+
+        /* Payment Method Page Styles - Colors adjusted */
+        #payment-method-page {
+            display: none; 
+            padding: 20px;
+            background-color: var(--color-light-cream);
+            border-top: 2px solid var(--color-warm-gold);
+            margin-top: 20px;
+        }
+        #payment-method-page h2 {
+            text-align: center;
+            color: var(--color-rich-brown);
+        }
+        #payment-form {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid var(--color-warm-gold);
+            border-radius: 10px;
+            background-color: white;
+        }
+        #payment-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--color-rich-brown);
+        }
+        #payment-form input[type="text"],
+        #payment-form input[type="email"],
+        #payment-form select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #payment-form .payment-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #payment-form .payment-buttons button {
+            margin: 0 10px;
+        }
+        .upi-info {
+            font-size: 0.9em;
+            color: var(--color-soft-grey);
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        /* Philosophy Section Styling based on image */
+        .philosophy-section {
+            background-color: var(--color-cream-bg);
+            padding: 80px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .philosophy-section h2 {
+            font-family: 'Times New Roman', serif;
+            font-size: 2.5em;
+            color: var(--color-rich-brown);
+            margin-bottom: 30px;
+        }
+
+        .philosophy-section p {
+            font-family: 'Georgia', sans-serif;
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: var(--color-dark-text);
+            margin: 15px 0;
+            text-align: left;
+            padding: 0 40px;
+        }
+
+        .philosophy-section p strong {
+            color: var(--color-warm-gold);
+        }
+
+        .founder-signature {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.5em;
+            color: var(--color-rich-brown);
+            margin-top: 40px;
+            font-style: italic;
+        }
+        /* Footer */
+footer {
+    background-color: var(--color-background);
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid var(--color-light);
+    color: #777;
+    font-size: 0.85rem;
+}
+    </style>
+</head>
+<body>
+    <div class="top-banner"></div>
+    <div class="main-header">
+        <h1 class="logo">E-Food</h1> 
+        <nav class="nav-links">
+           <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="Products.html">Products</a></li>
+                <li><a href="seasonal.html">Seasonal</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="order.html">Order</a></li>
+                <li><a href="reserve.html" class="cta-btn">Reserve</a></li>
+                <li><a href="Login.html">Login</a></li>
+        </nav>
+    </div>
+
+    <header>
+        <div class="old-header-content">
+            <h1>Welcome to E-Food</h1>
+            <p>Freshly baked delights just for you.</p>
+        </div>
+    </header>
+
+    <div class="philosophy-section" style="background-color: var(--color-cream-bg); padding: 10px 10px; text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2>Our Philosophy: Time and Craft</h2>
+    </div>
+    
+    <main>
+        <div class="menu" id="menu">
+            </div>
+        <div id="like-bag-container">
+            <h2>Your Like Bag</h2>
+            <div id="like-bag-items"></div>
+        </div>
+        <div id="cart-container">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <div class="cart-summary">
+                <p>Total Price: <span id="total-price">$0</span></p>
+                <button id="checkout-btn">Checkout All</button>
+            </div>
+        </div>
+
+        <div id="payment-method-page">
+            <h2>Select Payment Method</h2>
+            <form id="payment-form">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="payment-type">Payment Type:</label>
+                <select id="payment-type" name="payment-type">
+                    <option value="credit-card">Credit Card</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="upi">UPI</option>
+                </select>
+
+                <div id="credit-card-details" class="payment-details">
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="XXXX XXXX XXXX XXXX">
+                    <label for="expiry-date">Expiry Date (MM/YY):</label>
+                    <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="XXX">
+                </div>
+
+                <div id="paypal-details" class="payment-details" style="display: none;">
+                    <p>You will be redirected to PayPal to complete your purchase.</p>
+                </div>
+
+                <div id="upi-details" class="payment-details" style="display: none;">
+                    <label for="upi-id">UPI ID:</label>
+                    <input type="text" id="upi-id" name="upi-id" placeholder="yourname@bank">
+                    <div id="upi-validation-message" class="upi-info"></div>
+                    <div id="upi-error-message" class="error-message"></div>
+                </div>
+
+                <div class="payment-buttons">
+                    <button type="submit" id="pay-now-btn">Pay Now</button>
+                    <button type="button" id="cancel-payment-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <script>
+        const menuItems = [
+            { name: "Chocolate Cake", price: 15, image: "Screenshot 2025-01-11 201633.png", description: "Rich and moist chocolate delight." },
+            { name: "Croissant", price: 3, image: "Screenshot 2025-01-11 201257.png", description: "Flaky and buttery, straight from the oven." },
+            { name: "Blueberry Muffin", price: 4, image: "Screenshot 2025-01-11 201955.png", description: "Packed with fresh blueberries." },
+            { name: "Cinnamon Roll", price: 5, image: "Screenshot 2025-01-11 202305.png", description: "Swirls of cinnamon goodness." },
+            { name: "Cinnamon", price: 8, image: "Screenshot 2025-01-11 201746.png", description: "Swirls of cinnamon goodness." },
+            { name: "Bread", price: 9, image: "Screenshot 2025-01-11 195953.png", description: "Delicious fresh bread." },
+            { name: "Cup cake", price: 10, image: "Screenshot 2025-01-11 201817.png", description: "Sweet and fluffy cupcakes." },
+            { name: "Challah", price: 7, image: "Screenshot 2025-01-11 201022.png", description: "Soft and delicious bread." },
+            { name: "Biscuits", price: 18, image: "Screenshot 2025-01-11 201322.png", description: "Freshly baked buttery biscuits." },
+            { name: "Muffin", price: 20, image: "Screenshot 2025-01-11 202117.png", description: "Golden, warm muffins." },
+            { name: "Butter cake", price: 22, image: "Screenshot 2025-01-11 201609.png", description: "Buttery, rich cake." },
+        ];
+
+        const cart = [];
+        const likedItems = [];
+        const menuContainer = document.getElementById('menu');
+        const likeBagItemsContainer = document.getElementById('like-bag-items');
+        const cartContainer = document.getElementById('cart-container');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalPriceEl = document.getElementById('total-price');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const paymentMethodPage = document.getElementById('payment-method-page');
+        const paymentTypeSelect = document.getElementById('payment-type');
+        const creditCardDetails = document.getElementById('credit-card-details');
+        const paypalDetails = document.getElementById('paypal-details');
+        const upiDetails = document.getElementById('upi-details');
+        const upiIdInput = document.getElementById('upi-id');
+        const upiValidationMessage = document.getElementById('upi-validation-message');
+        const upiErrorMessage = document.getElementById('upi-error-message');
+        const payNowBtn = document.getElementById('pay-now-btn');
+        const cancelPaymentBtn = document.getElementById('cancel-payment-btn');
+        const paymentForm = document.getElementById('payment-form');
+
+        // Render menu items
+        menuItems.forEach((item, index) => {
+            const menuItem = document.createElement('div');
+            menuItem.className = 'menu-item';
+            menuItem.innerHTML = `
+                <span class="like-btn" data-index="${index}">&#9829;</span>
+                <img src="${item.image}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <p>${item.description}</p>
+                <p class="price">$${item.price.toFixed(2)}</p>
+                <button class="add-to-cart" data-index="${index}">Add to Cart</button>
+            `;
+            menuContainer.appendChild(menuItem);
+        });
+
+        // Update Like Bag UI
+        function updateLikeBagUI() {
+            likeBagItemsContainer.innerHTML = '';
+            if (likedItems.length === 0) {
+                likeBagItemsContainer.innerHTML = '<p>No items liked yet.</p>';
+            } else {
+                likedItems.forEach((item) => {
+                    const likeBagItem = document.createElement('div');
+                    likeBagItem.className = 'like-bag-item';
+                    likeBagItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="details">
+                            <h3>${item.name}</h3>
+                            <p class="price">$${item.price.toFixed(2)}</p>
+                        </div>
+                    `;
+                    likeBagItemsContainer.appendChild(likeBagItem);
+                });
+            }
+        }
+        updateLikeBagUI(); // Initial call to show "No items liked yet."
+
+        // Add to Cart
+        menuContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('add-to-cart')) {
+                const index = e.target.dataset.index;
+                const selectedItem = menuItems[index];
+
+                const existingCartItem = cart.find(item => item.name === selectedItem.name);
+
+                if (existingCartItem) {
+                    existingCartItem.quantity++;
+                } else {
+                    cart.push({ ...selectedItem, quantity: 1 });
+                }
+                updateCartUI();
+            }
+        });
+
+        // Like Button functionality
+        menuContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('like-btn')) {
+                const index = e.target.dataset.index;
+                const item = menuItems[index];
+
+                if (likedItems.includes(item)) {
+                    likedItems.splice(likedItems.indexOf(item), 1);
+                    e.target.classList.remove('liked');
+                } else {
+                    likedItems.push(item);
+                    e.target.classList.add('liked');
+                }
+                updateLikeBagUI();
+            }
+        });
+
+        // Update Cart UI
+        function updateCartUI() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    total += item.price * item.quantity;
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="details">
+                            <h3>${item.name}</h3>
+                            <div class="quantity-controls">
+                                <button class="decrement-quantity" data-index="${index}">-</button>
+                                <span class="item-quantity">${item.quantity}</span>
+                                <button class="increment-quantity" data-index="${index}">+</button>
+                            </div>
+                            <p class="price">$${(item.price * item.quantity).toFixed(2)}</p>
+                        </div>
+                        <button class="buy-now" data-index="${index}">Buy This</button>
+                        <button class="remove-from-cart" data-index="${index}">Remove</button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+            totalPriceEl.textContent = `$${total.toFixed(2)}`;
+            cartContainer.style.display = cart.length > 0 ? 'block' : 'none';
+        }
+
+        // Handle quantity changes in cart
+        cartItemsContainer.addEventListener('click', (e) => {
+            const index = e.target.dataset.index;
+            if (e.target.classList.contains('decrement-quantity')) {
+                if (cart[index].quantity > 1) {
+                    cart[index].quantity--;
+                } else {
+                    // If quantity is 1, remove the item
+                    cart.splice(index, 1);
+                }
+                updateCartUI();
+            } else if (e.target.classList.contains('increment-quantity')) {
+                cart[index].quantity++;
+                updateCartUI();
+            } else if (e.target.classList.contains('remove-from-cart')) {
+                cart.splice(index, 1);
+                updateCartUI();
+            } else if (e.target.classList.contains('buy-now')) {
+                const item = cart[index];
+                cart.splice(index, 1); // Remove from main cart for individual purchase
+                updateCartUI();
+                showPaymentMethodPage([item]); // Pass as an array for consistency
+            }
+        });
+
+
+        // Checkout All Process
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+            showPaymentMethodPage(cart); // Pass the entire cart for checkout
+        });
+
+        // Show Payment Method Page
+        function showPaymentMethodPage(itemsToProcess) {
+            menuContainer.style.display = 'none';
+            cartContainer.style.display = 'none';
+            likeBagItemsContainer.parentElement.style.display = 'none'; // Hide like bag
+            document.querySelector('.philosophy-section').style.display = 'none'; // Hide philosophy section
+            paymentMethodPage.style.display = 'block';
+            paymentForm.reset(); // Reset the payment form fields
+            upiValidationMessage.textContent = ''; // Clear previous UPI messages
+            upiErrorMessage.textContent = '';
+            // Initially show credit card details
+            paymentTypeSelect.value = 'credit-card';
+            creditCardDetails.style.display = 'block';
+            paypalDetails.style.display = 'none';
+            upiDetails.style.display = 'none';
+
+
+            // Store the items being processed for payment
+            paymentMethodPage.dataset.items = JSON.stringify(itemsToProcess);
+        }
+
+        // Handle Payment Type selection
+        paymentTypeSelect.addEventListener('change', (e) => {
+            creditCardDetails.style.display = 'none';
+            paypalDetails.style.display = 'none';
+            upiDetails.style.display = 'none';
+            upiValidationMessage.textContent = ''; // Clear messages when switching
+            upiErrorMessage.textContent = '';
+
+
+            switch (e.target.value) {
+                case 'credit-card':
+                    creditCardDetails.style.display = 'block';
+                    break;
+                case 'paypal':
+                    paypalDetails.style.display = 'block';
+                    break;
+                case 'upi':
+                    upiDetails.style.display = 'block';
+                    break;
+            }
+        });
+
+        // UPI ID Validation and Type Display
+        upiIdInput.addEventListener('input', () => {
+            const upiId = upiIdInput.value.trim();
+            upiValidationMessage.textContent = '';
+            upiErrorMessage.textContent = '';
+
+            if (upiId === '') {
+                return; // Do nothing if input is empty
+            }
+
+            // Basic UPI ID regex: something@bankname or something@paymentapp
+            const upiRegex = /^[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}$/;
+
+            if (upiRegex.test(upiId)) {
+                let type = 'Generic UPI ID';
+                const parts = upiId.split('@');
+                const handle = parts[1].toLowerCase();
+
+                if (handle.includes('paytm')) {
+                    type = 'Paytm UPI ID';
+                } else if (handle.includes('ybl')) {
+                    type = 'PhonePe UPI ID';
+                } else if (handle.includes('okaxis')) {
+                    type = 'Google Pay UPI ID';
+                } else if (handle.includes('ibl')) {
+                    type = 'Amazon Pay UPI ID';
+                } else if (handle.includes('sbi')) {
+                    type = 'SBI Pay UPI ID';
+                } // Add more specific handles as needed
+
+                upiValidationMessage.textContent = `Valid UPI ID (${type})`;
+                upiValidationMessage.style.color = 'green';
+            } else {
+                upiErrorMessage.textContent = 'Invalid UPI ID format.';
+                upiErrorMessage.style.color = 'red';
+            }
+        });
+
+
+        // Simulate Payment Confirmation
+        paymentForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            const paymentType = paymentTypeSelect.value;
+
+            // Perform UPI validation before allowing submission if UPI is selected
+            if (paymentType === 'upi') {
+                const upiId = upiIdInput.value.trim();
+                const upiRegex = /^[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}$/;
+                if (!upiRegex.test(upiId)) {
+                    upiErrorMessage.textContent = 'Please enter a valid UPI ID.';
+                    upiErrorMessage.style.color = 'red';
+                    return; // Stop form submission
+                }
+            }
+
+            // Retrieve the items that were passed to the payment page
+            const itemsProcessed = JSON.parse(paymentMethodPage.dataset.items);
+            let purchaseSummary = '';
+            let totalAmount = 0;
+
+            itemsProcessed.forEach(item => {
+                purchaseSummary += `- ${item.name} x${item.quantity} ($${(item.price * item.quantity).toFixed(2)})\n`;
+                totalAmount += item.price * item.quantity;
+            });
+
+
+            alert(`
+                Payment successful!
+                You have purchased:
+                ${purchaseSummary}
+                Total: $${totalAmount.toFixed(2)}
+                Paid via: ${paymentType.replace('-', ' ').toUpperCase()}
+
+                Thank you for your order!
+            `);
+
+            // Clear the cart if it was a full checkout, otherwise individual items are already removed
+            // Check if all items in 'itemsProcessed' are also present in the 'cart' (before any removals)
+            // This logic is a bit tricky to make perfectly robust for partial cart checkout.
+            // For simplicity, we'll assume if 'itemsProcessed' length is equal to current 'cart' length, it was a full checkout.
+            const initialCartLength = cart.length; // Capture cart length before potential splice
+            let wasFullCheckout = true;
+            if (itemsProcessed.length === initialCartLength) {
+                // If every item in itemsProcessed matches an item in the cart (by name and quantity), it's a full checkout
+                wasFullCheckout = itemsProcessed.every(procItem =>
+                    cart.some(cartItem => cartItem.name === procItem.name && cartItem.quantity === procItem.quantity)
+                );
+            } else {
+                wasFullCheckout = false;
+            }
+
+
+            if (wasFullCheckout) {
+                cart.length = 0; // Clear the entire cart array
+            } else if (itemsProcessed.length === 1) {
+                // If only one item was processed (e.g., "Buy This"), it's already removed in buy-now click
+                // No need to remove again from 'cart' array here.
+            }
+
+            returnToMenu(); // Go back to the main menu view
+        });
+
+
+        // Cancel Payment
+        cancelPaymentBtn.addEventListener('click', () => {
+            alert("Payment cancelled.");
+            returnToMenu();
+        });
+
+        // Function to return to the main menu view
+        function returnToMenu() {
+            paymentMethodPage.style.display = 'none';
+            document.querySelector('.philosophy-section').style.display = 'block'; // Show philosophy section
+            menuContainer.style.display = 'grid'; // Show menu again
+            likeBagItemsContainer.parentElement.style.display = 'block'; // Show like bag again
+            updateCartUI(); // Refresh cart to show cleared items or remaining
+        }
+
+        updateCartUI(); // Initial call to display empty cart message
+    </script>
+    
+</body>
+ <footer>
+        <p>&copy; 2025 E-Food Patisserie. Crafted with Patience and Elegance.</p>
+    </footer>
+
+</html>
