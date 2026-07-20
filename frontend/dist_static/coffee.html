@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donuts | SweetTreats</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="custom_features.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .donuts-container { padding: 40px; max-width: 1400px; margin: 0 auto; }
+        
+        /* FEATURED DONUT SECTION */
+        .featured-donut {
+            display: flex;
+            background: linear-gradient(to right, #ffd194, #70e1f5);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .featured-info {
+            padding: 60px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .featured-info h2 { font-size: 3.5rem; color: #fff; margin-bottom: 15px; font-family: var(--font-heading); line-height: 1.1; }
+        .featured-info p { font-size: 1.2rem; color: #fff; margin-bottom: 30px; }
+        .featured-info button { background: #fff; color: #333; border: none; padding: 15px 40px; font-size: 1.2rem; border-radius: 30px; font-weight: bold; cursor: pointer; width: fit-content; transition: 0.3s; }
+        .featured-info button:hover { transform: scale(1.05); }
+        .featured-img {
+            flex: 1;
+            background: url('donut_category_1777660467553.png') center/cover;
+            min-height: 400px;
+        }
+
+        /* HORIZONTAL SCROLL TRENDING */
+        .trending-section h3 { font-size: 2rem; margin-bottom: 20px; font-family: var(--font-heading); }
+        .horizontal-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+        }
+        .horizontal-scroll::-webkit-scrollbar { height: 8px; }
+        .horizontal-scroll::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .horizontal-scroll::-webkit-scrollbar-thumb { background: var(--clr-primary); border-radius: 10px; }
+        
+        .donut-card {
+            flex: 0 0 250px;
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .donut-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); border-bottom: 4px solid var(--clr-primary); }
+        .donut-card img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; }
+        .donut-card h4 { font-size: 1.2rem; margin-bottom: 5px; }
+        .donut-card .price { color: var(--clr-primary); font-weight: bold; font-size: 1.2rem; margin-bottom: 15px; }
+        .donut-card button { width: 100%; padding: 10px; border-radius: 20px; border: 1px solid var(--clr-primary); background: transparent; color: var(--clr-primary); font-weight: bold; cursor: pointer; transition: 0.3s; }
+        .donut-card button:hover { background: var(--clr-primary); color: #fff; }
+    
+        /* PINTEREST MASONRY LAYOUT */
+        .masonry-container {
+            column-count: 4;
+            column-gap: 20px;
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        @media (max-width: 1200px) { .masonry-container { column-count: 3; } }
+        @media (max-width: 900px) { .masonry-container { column-count: 2; } }
+        @media (max-width: 600px) { .masonry-container { column-count: 1; } }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .masonry-item:hover {
+            transform: translateY(-5px);
+        }
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        .masonry-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            opacity: 0;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .masonry-item:hover .masonry-overlay {
+            opacity: 1;
+        }
+        .masonry-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .masonry-price {
+            font-size: 1.1rem;
+            color: #ff9a9e;
+            font-weight: bold;
+        }
+        .btn-pin {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e60023;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .btn-pin:hover {
+            background: #b3001b;
+        }
+        .masonry-item:hover .btn-pin {
+            opacity: 1;
+        }
+        
+        /* Banner inside masonry */
+        .masonry-banner {
+            background: var(--clr-primary, #ff4d4d);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 250px;
+        }
+
+
+/* MEGA DONUT CSS */
+.d-hero {
+    background: #fff;
+    padding: 100px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+.d-hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 150px;
+    background: #f4dfd0;
+    border-radius: 0 0 50% 50% / 0 0 40px 40px;
+}
+.d-hero-text {
+    flex: 1;
+    z-index: 2;
+    padding-left: 5%;
+}
+.d-hero-text h1 {
+    font-family: 'Georgia', 'Times New Roman', serif; letter-spacing: 1px;
+    font-size: 4rem;
+    color: #6d4c41;
+    margin-bottom: 5px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.d-hero-text h2 {
+    font-size: 3rem;
+    color: #6d4c41;
+    margin-bottom: 20px;
+}
+.d-hero-text p {
+    color: #666;
+    max-width: 300px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+.d-hero-btns button {
+    background: #00d2d3;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 210, 211, 0.3);
+    transition: 0.3s;
+}
+.d-hero-btns button:hover { transform: translateY(-5px); }
+.d-hero-img {
+    flex: 1.5;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+.d-hero-img img.main-donut {
+    width: 450px;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.2));
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0); } }
+
+.d-aqua-section {
+    background: #48c7d0;
+    padding: 100px 5%;
+    text-align: center;
+    position: relative;
+}
+.d-aqua-title {
+    font-family: 'Georgia', 'Times New Roman', serif; letter-spacing: 1px;
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 60px;
+    font-weight: 900;
+}
+.d-aqua-title span { color: #6d4c41; }
+.d-features-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.d-feature-col {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.d-feature-box {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 20px;
+    color: #48c7d0;
+    font-weight: bold;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    position: relative;
+    width: 200px;
+}
+.d-feature-box i {
+    position: absolute;
+    top: -20px; left: 50%;
+    transform: translateX(-50%);
+    background: #6d4c41;
+    color: #fff;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+.d-aqua-center-img img {
+    width: 350px;
+    border-radius: 50%;
+    box-shadow: 0 0 100px rgba(255, 107, 158, 0.5);
+}
+
+.d-promo-section {
+    background: #fdfbfb;
+    padding: 100px 5%;
+    text-align: center;
+}
+.d-promo-title {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: 900;
+    margin-bottom: 60px;
+}
+.d-promo-cards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+.d-promo-card {
+    background: linear-gradient(135deg, #74ebd5 0%, #9face6 100%);
+    width: 400px;
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 20px 40px rgba(116, 235, 213, 0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.d-promo-card:hover { transform: scale(1.05); }
+.d-promo-text { text-align: left; }
+.d-promo-text h3 { font-size: 2rem; margin-bottom: 10px; font-weight: 900; }
+.d-promo-text p { font-size: 1rem; margin-bottom: 20px; }
+.d-promo-btn {
+    background: #6d4c41;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+.d-promo-img img {
+    width: 120px;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+}
+
+.d-products-section {
+    background: #f4dfd0;
+    padding: 100px 5%;
+    text-align: center;
+}
+.d-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.d-prod-card {
+    background: #fff;
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.d-prod-card:hover { transform: translateY(-10px); }
+.d-prod-card img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.d-prod-card h4 {
+    font-family: 'Georgia', 'Times New Roman', serif; letter-spacing: 1px;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #6d4c41;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+.d-prod-card .price {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #333;
+    margin-bottom: 20px;
+}
+.d-prod-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    width: 100%;
+    transition: 0.3s;
+}
+.d-prod-card:hover .d-prod-btn { background: #6d4c41; }
+
+</style>
+</head>
+<body style="background: #fafafa;">
+
+    <nav class="navbar" style="position: relative;">
+        <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">SWEET TREATS</div>
+        <ul class="nav-links">
+            <li><a href="index.html" style="font-weight:bold; color:var(--clr-text-main);">Home</a></li>
+            <li class="has-megamenu">
+                <a href="cakes.html">Cakes</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Birthday Cakes</li>
+                            <li>Anniversary Cakes</li>
+                            <li>Wedding Cakes</li>
+                            <li>Eggless Cakes</li>
+                            <li>Chocolate Cakes</li>
+                            <li>Fruit Cakes</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card" onclick="openProductModal('Chocolate Truffle', 'Our signature dessert crafted perfectly.', 499, 'cake_category_1777660447849.png')">
+                                <img src="cake_category_1777660447849.png" alt="Chocolate Truffle">
+                                <p>Chocolate Truffle</p>
+                                <span>₹499</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card" onclick="openProductModal('Red Velvet Cake', 'Our signature dessert crafted perfectly.', 599, 'recommended_cake.png')">
+                                <img src="recommended_cake.png" alt="Red Velvet">
+                                <p>Red Velvet Cake</p>
+                                <span>₹599</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card" onclick="openProductModal('Mango Cake', 'Our signature dessert crafted perfectly.', 399, 'cake_category_1777660447849.png')">
+                                <img src="cake_category_1777660447849.png" alt="Mango Cake">
+                                <p>Mango Cake</p>
+                                <span>₹399</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card" onclick="openProductModal('Black Forest', 'Our signature dessert crafted perfectly.', 449, 'recommended_cake.png')">
+                                <img src="recommended_cake.png" alt="Black Forest">
+                                <p>Black Forest</p>
+                                <span>₹449</span>
+                                <button>Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner">
+                            <h4>Flat 20% OFF</h4>
+                            <p>on Birthday Cakes</p>
+                            <button onclick="window.location.href='cakes.html'">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="donuts.html">Donuts</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Chocolate</li>
+                            <li>Strawberry</li>
+                            <li>Glazed</li>
+                            <li>Cookies & Cream</li>
+                            <li>Sprinkles</li>
+                            <li>Nut Filled</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card" onclick="openProductModal('Chocolate Donut', 'Our signature dessert crafted perfectly.', 149, 'donut_category_1777660467553.png')">
+                                <img src="donut_category_1777660467553.png" alt="Chocolate Donut">
+                                <p>Chocolate Donut</p>
+                                <span>₹149</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card" onclick="openProductModal('Strawberry Donut', 'Our signature dessert crafted perfectly.', 129, 'recommended_donut.png')">
+                                <img src="recommended_donut.png" alt="Strawberry Donut">
+                                <p>Strawberry Donut</p>
+                                <span>₹129</span>
+                                <button>Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            <h4>Buy 2 Get 1 Free</h4>
+                            <p>Fresh Donuts</p>
+                            <button onclick="window.location.href='donuts.html'">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="pastries.html">Pastries</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Chocolate Pastry</li>
+                            <li>Strawberry</li>
+                            <li>Pineapple</li>
+                            <li>Coffee</li>
+                            <li>Cheesecake Slice</li>
+                            <li>Tiramisu</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card" onclick="window.location.href='pastries.html'">
+                                <img src="pastry_category_1777660510169.png" alt="Croissant">
+                                <p>Almond Croissant</p>
+                                <span>₹189</span>
+                                <button>View Details</button>
+                            </div>
+                            <div class="mega-card" onclick="window.location.href='pastries.html'">
+                                <img src="recommended_pastry.png" alt="Pain au Chocolat">
+                                <p>Pain au Chocolat</p>
+                                <span>₹199</span>
+                                <button>View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner" style="background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); color: #333; border: 1px solid #ddd;">
+                            <h4>Mini Pastries</h4>
+                            <p>Premium Collection</p>
+                            <button onclick="window.location.href='pastries.html'" style="background: #333; color: #fff;">Explore All</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="icecream.html">Ice Cream</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Chocolate</li>
+                            <li>Strawberry</li>
+                            <li>Mango</li>
+                            <li>Cookies & Cream</li>
+                            <li>Sundaes</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card" onclick="openProductModal('Vanilla Cone', 'Our signature dessert crafted perfectly.', 199, 'icecream_category_1777660485890.png')" style="cursor:pointer;">
+                                <img src="icecream_category_1777660485890.png" alt="Vanilla Cone">
+                                <p>Vanilla Cone</p>
+                                <span>₹199</span>
+                                <button>Add</button></div>
+                            <div class="mega-card" onclick="openProductModal('Mango Gelato', 'Our signature dessert crafted perfectly.', 229, 'recommended_icecream.png')" style="cursor:pointer;">
+                                <img src="recommended_icecream.png" alt="Mango Gelato">
+                                <p>Mango Gelato</p>
+                                <span>₹229</span>
+                                <button>Add</button></div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+                            <h4>Buy 1 Get 1</h4>
+                            <p>Summer Specials</p>
+                            <button onclick="window.location.href='icecream.html'">Shop Ice Creams</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="gifting.html">Gifting</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Cake + Flowers</li>
+                            <li>Chocolate Hampers</li>
+                            <li>Teddy Combos</li>
+                            <li>Greeting Cards</li>
+                            <li>Party Decor</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card" onclick="openProductModal('Cupcake Hamper', 'Our signature dessert crafted perfectly.', 899, 'cupcake_deal_1777660591014.png')" style="cursor:pointer;">
+                                <img src="cupcake_deal_1777660591014.png" alt="Gift Hamper">
+                                <p>Cupcake Hamper</p>
+                                <span>₹899</span>
+                                <button>Add</button></div>
+                            <div class="mega-card" onclick="openProductModal('Premium Macarons', 'Our signature dessert crafted perfectly.', 999, 'macaron_deal_1777660573385.png')" style="cursor:pointer;">
+                                <img src="macaron_deal_1777660573385.png" alt="Macaron Box">
+                                <p>Premium Macarons</p>
+                                <span>₹999</span>
+                                <button>Add</button></div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner" style="background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);">
+                            <h4>Perfect Surprise</h4>
+                            <p>Valentine's Collection</p>
+                            <button onclick="window.location.href='gifting.html'">View Gifts</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-search search-container" id="navSearchContainer">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search for desserts, brands and more" oninput="handleSearchInput(this.value)">
+            <div class="search-dropdown" id="searchDropdown">
+                <!-- Javascript will populate suggestions here -->
+            </div>
+        </div>
+        <div class="nav-actions">
+            <div class="action-item" onclick="window.location.href='menu.html'" style="cursor:pointer;">
+                <i class="fa-solid fa-bars"></i>
+                <span>Menu</span>
+            </div>
+            <div class="action-item" onclick="window.location.href='login.html'" style="cursor:pointer;">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+            <div class="action-item" onclick="window.location.href='order_history.html'" style="cursor:pointer;">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Orders</span>
+            </div>
+            <div class="action-item" onclick="window.location.href='wishlist.html'" style="cursor:pointer;">
+                <i class="fa-regular fa-heart"></i>
+                <span>Wishlist</span>
+            </div>
+            <div class="action-item cart-hover-container">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Bag</span>
+                <div class="cart-dropdown">
+                    <h4>🛒 My Bag</h4>
+                    <div class="cart-hover-items" id="cartHoverItems">
+                        <!-- JS populated -->
+                        <p style="text-align: center; color: #888; font-size: 0.9rem;">Your bag is empty</p>
+                    </div>
+                    <div class="cart-hover-footer">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>Subtotal</span>
+                            <strong id="cartHoverTotal">₹0</strong>
+                        </div>
+                        <button onclick="openCheckout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+<style>
+/* COFFEE DESIGN */
+body { background: #e0d5cd; }
+.coffee-wrapper {
+    background: linear-gradient(180deg, #e0d5cd 0%, #b8a69b 40%, #7d655a 70%, #3e2820 100%);
+    padding: 100px 5% 50px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: #3e2820;
+    overflow: hidden;
+    position: relative;
+    border-radius: 40px;
+    margin: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+.coffee-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+}
+.coffee-logo { font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 10px; color: #3e2820; }
+.coffee-menu { display: flex; gap: 30px; font-weight: 600; font-size: 0.9rem; color: #3e2820; }
+.coffee-btn { background: #3e2820; color: #fff; border: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; cursor: pointer; }
+
+.coffee-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.coffee-hero-text h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+.coffee-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+.coffee-icon {
+    width: 50px; height: 50px; border-radius: 50%; border: 2px solid #3e2820;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.coffee-hero-img img {
+    width: 400px;
+    border-radius: 50%;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+    background: #fff;
+    padding: 10px;
+}
+
+.coffee-cards {
+    display: flex;
+    gap: 40px;
+    margin-top: 100px;
+}
+.c-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    width: 250px;
+    position: relative;
+    padding-top: 80px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: 0.3s;
+}
+.c-card:hover { transform: translateY(-10px); }
+.c-card img {
+    position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+    width: 130px; height: 130px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.c-card h4 { font-size: 1.4rem; margin-bottom: 10px; }
+.c-card p { font-size: 0.8rem; color: #666; margin-bottom: 20px; line-height: 1.4; }
+.c-card-footer { display: flex; justify-content: space-between; align-items: center; }
+.c-price { background: #3e2820; color: #fff; padding: 8px 15px; border-radius: 15px; font-weight: bold; font-size: 0.9rem; }
+.c-icons i { margin-left: 10px; color: #888; font-size: 1.1rem; }
+
+.coffee-section-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 150px;
+    color: #fff;
+}
+.coffee-section-2 h2 { font-size: 3rem; margin-bottom: 20px; font-weight: 800; max-width: 500px; }
+.coffee-section-2 p { max-width: 400px; font-size: 1rem; line-height: 1.6; margin-bottom: 30px; color: #ddd; }
+.coffee-section-2-img { position: relative; }
+.coffee-section-2-img img { width: 350px; border-radius: 50%; border: 15px solid rgba(255,255,255,0.2); }
+.c-price-tag { position: absolute; top: 30px; right: 0; background: #fff; color: #3e2820; padding: 15px; border-radius: 15px; font-weight: bold; font-size: 1.2rem; z-index: 10;}
+</style>
+
+<div class="coffee-wrapper">
+    <div class="coffee-nav">
+        <div class="coffee-logo"><i class="fa-solid fa-mug-hot"></i> Flavored</div>
+        <div class="coffee-menu">
+            <span>Home</span>
+            <span>Coffee Menu</span>
+            <span>About Us</span>
+            <span>Contact us</span>
+        </div>
+        <button class="coffee-btn">Coffee Shop</button>
+    </div>
+
+    <div class="coffee-hero">
+        <div class="coffee-hero-text">
+            <h1>Coffee<br>The Best For You</h1>
+            <button class="coffee-btn" onclick="addToCart('Signature Latte', 4, 'icecream_category_1777660485890.png', 1); openCheckout();" style="padding: 15px 35px; font-size: 1.1rem;">View Menu</button>
+            <div class="coffee-icons">
+                <div class="coffee-icon"><i class="fa-solid fa-mug-saucer"></i></div>
+                <div class="coffee-icon"><i class="fa-solid fa-ice-cream"></i></div>
+                <div class="coffee-icon"><i class="fa-solid fa-martini-glass"></i></div>
+                <div class="coffee-icon"><i class="fa-solid fa-seedling"></i></div>
+            </div>
+        </div>
+        <div class="coffee-hero-img">
+            <img src="croissant_coffee_1784385270265.png" alt="Latte Art" style="object-position: top; object-fit: cover; width:450px; height:450px;">
+        </div>
+    </div>
+
+    <div class="coffee-cards">
+        <div class="c-card" onclick="openProductModal('Americano', '100% Natural Arabica or Robusta, 30 ml cup', 2.50, 'icecream_category_1777660485890.png')">
+            <img src="icecream_category_1777660485890.png" alt="Americano" style="object-fit:cover;">
+            <h4>Americano</h4>
+            <p>100% Natural Arabica or Robusta, 30 ml cup</p>
+            <div class="c-card-footer">
+                <div class="c-price">₹2.50</div>
+                <div class="c-icons"><i class="fa-solid fa-cart-plus"></i> <i class="fa-regular fa-heart"></i></div>
+            </div>
+        </div>
+        <div class="c-card" onclick="openProductModal('Cappuccino', 'Coffee 50%, milk 50%, 280 ml', 3.50, 'croissant_coffee_1784385270265.png')">
+            <img src="croissant_coffee_1784385270265.png" alt="Cappuccino" style="object-fit:cover;">
+            <h4>Cappuccino</h4>
+            <p>Coffee 50%, milk 50%, 280 ml</p>
+            <div class="c-card-footer">
+                <div class="c-price">₹3.50</div>
+                <div class="c-icons"><i class="fa-solid fa-cart-plus"></i> <i class="fa-regular fa-heart"></i></div>
+            </div>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding-left: 50px;">
+            <h2 style="font-size:2.5rem; font-weight:800; margin-bottom:20px;">Premium Roast<br>is simply the best</h2>
+            <p style="color:#555; line-height:1.6; max-width:400px; margin-bottom:20px;">Our artisan coffee is brewed to perfection using the finest sourced beans from around the world.</p>
+            <button class="coffee-btn" style="width:fit-content;">Learn More</button>
+        </div>
+    </div>
+
+    <div class="coffee-section-2">
+        <div>
+            <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+            <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <button class="coffee-btn" style="background:#fff; color:#3e2820;">Learn More</button>
+        </div>
+        <div class="coffee-section-2-img">
+            <div class="c-price-tag">₹2.50</div>
+            <img src="croissant_coffee_1784385270265.png" alt="Coffee Cup" style="object-fit:cover; width:350px; height:350px;">
+        </div>
+    </div>
+</div>
+
+<!-- OVERLAYS -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Bag</h3>
+            <div class="cart-close" id="closeCart"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="cart-body" id="cartItems">
+            <!-- Cart items will be injected here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn-checkout" onclick="openCheckout()">Checkout Now</button>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-header">
+            <h2 class="modal-title">Checkout</h2>
+        </div>
+        <form onsubmit="processPayment(event)">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" required placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label>Delivery Address</label>
+                <textarea class="form-control" required placeholder="Enter delivery address"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Payment Method</label>
+                <select class="form-control">
+                    <option>Credit / Debit Card</option>
+                    <option>UPI / Google Pay</option>
+                    <option>Cash on Delivery</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-checkout">Place Order</button>
+        </form>
+    </div>
+
+    <!-- RESERVATION MODAL -->
+    <div class="modal" id="reserveModal">
+        <div class="modal-header">
+            <h2 class="modal-title">Book a Table</h2>
+        </div>
+        <form onsubmit="processReservation(event)">
+            <div class="form-group">
+                <label>Number of Guests</label>
+                <input type="number" class="form-control" min="1" required value="2">
+            </div>
+            <div class="form-group">
+                <label>Date & Time</label>
+                <input type="datetime-local" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Occasion</label>
+                <select class="form-control">
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                    <option>Business Meeting</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-checkout">Confirm Booking</button>
+        </form>
+    </div>
+
+    <!-- CATEGORY DETAILS MODAL -->
+    
+    <!-- REDESIGNED CATEGORY DETAILS MODAL -->
+    
+    <!-- REDESIGNED CATEGORY DETAILS MODAL -->
+    <div class="modal" id="categoryDetailModal" style="padding:0; max-width:400px; border-radius:35px; overflow:hidden; background:#fef4e8; box-shadow:0 30px 60px rgba(0,0,0,0.2); border: 8px solid #111;">
+        <!-- Top Image with Zigzag mask -->
+        <div style="position:relative; width:100%; height:320px; background:#fff;">
+            <img id="categoryMainImg" src="" alt="" style="width:100%; height:100%; object-fit:cover; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), 90% 100%, 80% calc(100% - 25px), 70% 100%, 60% calc(100% - 25px), 50% 100%, 40% calc(100% - 25px), 30% 100%, 20% calc(100% - 25px), 10% 100%, 0 calc(100% - 25px));">
+            
+            <!-- Floating Buttons -->
+            <button onclick="document.getElementById('categoryDetailModal').classList.remove('show'); document.getElementById('overlay').classList.remove('show');" style="position:absolute; top:25px; left:20px; width:40px; height:40px; border-radius:12px; border:none; background:#ff9054; color:#fff; cursor:pointer; font-size:1.2rem; box-shadow:0 5px 15px rgba(255,144,84,0.4); z-index:10;"><i class="fa-solid fa-chevron-left"></i></button>
+            <button id="modalWishlistBtn" onclick="toggleWishlist(this)" style="position:absolute; top:25px; right:20px; width:40px; height:40px; border-radius:12px; border:2px solid #ff9054; background:transparent; color:#ff9054; cursor:pointer; font-size:1.2rem; z-index:10; transition:0.3s;"><i class="fa-regular fa-heart"></i></button>
+        </div>
+        
+        <!-- Content Body -->
+        <div style="padding:30px 25px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h3 id="categoryMainName" style="font-family:var(--font-heading); font-size:1.6rem; color:#222; margin:0; line-height:1.2; max-width:70%;"></h3>
+                <span id="categoryMainPrice" style="font-size:1.4rem; font-weight:400; color:#222;"></span>
+            </div>
+            
+            <p id="categoryMainDesc" style="color:#888; font-size:0.85rem; line-height:1.6; margin-bottom:25px;"></p>
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <span style="color:#222; font-size:1.05rem;">Flavour</span>
+                <span style="color:#222; font-weight:600;">Signature</span>
+            </div>
+            
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+                <span style="color:#222; font-size:1.05rem;">Quantity</span>
+                <div style="display:flex; align-items:center; background:#fff; border-radius:20px; padding:5px 15px; box-shadow:0 2px 10px rgba(0,0,0,0.03);">
+                    <button onclick="changeModalQty(-1)" style="border:none; background:none; cursor:pointer; font-weight:bold; font-size:1.2rem; color:#555; width:20px;">-</button>
+                    <span id="modalQtyVal" style="margin:0 15px; font-weight:bold; font-size:1.1rem; color:#222; width:20px; text-align:center;">1</span>
+                    <button onclick="changeModalQty(1)" style="border:none; background:none; cursor:pointer; font-weight:bold; font-size:1.2rem; color:#555; width:20px;">+</button>
+                </div>
+            </div>
+            
+            <h4 id="suggestionsTitle" style="font-size:1.1rem; color:#222; margin-bottom:15px; font-weight:400;">Add Extras</h4>
+            <div id="modalSuggestions" style="display:flex; gap:15px; margin-bottom:30px; overflow-x:auto; padding-bottom:5px;">
+                <!-- Dynamically injected -->
+            </div>
+            
+            <button id="categoryAddBagBtn" style="width:100%; background:linear-gradient(90deg, #ff9054, #ff6c2c); border:none; padding:20px 25px; border-radius:35px; color:#fff; font-size:1.1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; box-shadow:0 15px 30px rgba(255,108,44,0.3); transition: transform 0.2s;">
+                <span id="categoryAddBagText" style="font-weight:400;">Add to Cart</span>
+                <span id="modalTotalPrice" style="font-weight:bold;"></span>
+            </button>
+        </div>
+    </div>
+
+<div class="ai-widget" onclick="toggleAIChat()">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+    <div class="ai-chat-window" id="aiChat">
+        <div class="ai-chat-header">
+            <span>AI SweetAssistant</span>
+            <i class="fa-solid fa-minus" style="cursor: pointer;" onclick="toggleAIChat()"></i>
+        </div>
+        <div class="ai-chat-body" id="aiBody">
+            <div class="ai-msg bot">Hi! I'm your AI SweetAssistant. I can recommend the perfect dessert for your mood. What are you craving today?</div>
+        </div>
+        <div class="ai-chat-footer">
+            <input type="text" class="ai-chat-input" id="aiInput" placeholder="Describe your mood..." onkeydown="if(event.key==='Enter') sendAIMessage()">
+            <i class="fa-solid fa-paper-plane" style="color: var(--clr-primary); cursor: pointer;" onclick="sendAIMessage()"></i>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    
+
+
+<script>
+    let currentModalQty = 1;
+    let currentModalBasePrice = 0;
+    
+    function changeModalQty(change) {
+        currentModalQty += change;
+        if (currentModalQty < 1) currentModalQty = 1;
+        const qtyValEl = document.getElementById('modalQtyVal');
+        if (qtyValEl) qtyValEl.textContent = currentModalQty;
+        
+        const totalEl = document.getElementById('modalTotalPrice');
+        if (totalEl && currentModalBasePrice) {
+            totalEl.textContent = '₹' + (currentModalBasePrice * currentModalQty);
+        }
+    }
+
+    function toggleWishlist(btn) {
+        if (btn.getAttribute('data-wished') !== 'true') {
+            btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
+            btn.style.background = '#ff9054';
+            btn.style.color = '#fff';
+            btn.setAttribute('data-wished', 'true');
+            if(typeof showToast === 'function') showToast('Added to Wishlist!');
+        } else {
+            btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            btn.style.background = 'transparent';
+            btn.style.color = '#ff9054';
+            btn.setAttribute('data-wished', 'false');
+            if(typeof showToast === 'function') showToast('Removed from Wishlist');
+        }
+    }
+
+    function generateSuggestions(name) {
+        const n = name.toLowerCase();
+        let html = '';
+        let title = 'Add Drinks';
+        
+        if (n.includes('cake') || n.includes('cupcake')) {
+            title = 'Add Party Essentials';
+            html = `
+                <div onclick="showToast('Magic Candles Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1532054944983-6c820061e860?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Party Popper Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1530103862676-de8892b12a1f?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Happy Birthday Tag Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1614088636402-40f41334c9c1?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        } else if (n.includes('ice cream') || n.includes('gelato')) {
+            title = 'Add Toppings';
+            html = `
+                <div onclick="showToast('Choco Chips Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1622329241951-40995085d7b5?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Caramel Syrup Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1596700816912-ee98274719c8?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Waffle Cone Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1559182582-77eb93108ee8?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        } else if (n.includes('macaron') || n.includes('pastry') || n.includes('donut')) {
+            title = 'Add Beverages';
+            html = `
+                <div onclick="showToast('Hot Coffee Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Iced Latte Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1517701550927-30cfcb64db88?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Berry Shake Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1623065422900-0587b1c3fa4a?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        } else {
+            title = 'Add Drinks';
+            html = `
+                <div onclick="showToast('Strawberry Splash Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1623065422900-0587b1c3fa4a?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Iced Coffee Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1517701550927-30cfcb64db88?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        }
+        
+        const titleEl = document.getElementById('suggestionsTitle');
+        if (titleEl) titleEl.textContent = title;
+        
+        const suggEl = document.getElementById('modalSuggestions');
+        if (suggEl) suggEl.innerHTML = html;
+    }
+
+    function openProductModal(name, desc, price, img) {
+        currentModalQty = 1;
+        currentModalBasePrice = price;
+        
+        const qtyValEl = document.getElementById('modalQtyVal');
+        if (qtyValEl) qtyValEl.textContent = currentModalQty;
+
+        const mainNameEl = document.getElementById('categoryMainName');
+        if (mainNameEl) mainNameEl.textContent = name;
+        
+        const mainImgEl = document.getElementById('categoryMainImg');
+        if (mainImgEl) {
+            mainImgEl.src = img;
+            mainImgEl.alt = name;
+        }
+        
+        const mainDescEl = document.getElementById('categoryMainDesc');
+        if (mainDescEl) mainDescEl.textContent = desc || 'A classic delight marvel of pastry craftsmanship. Handcrafted with perfection for any celebration, big or small.';
+        
+        const mainPriceEl = document.getElementById('categoryMainPrice');
+        if (mainPriceEl) mainPriceEl.textContent = '₹' + price;
+        
+        const totalEl = document.getElementById('modalTotalPrice');
+        if (totalEl) totalEl.textContent = '₹' + price;
+        
+        // Reset wishlist button
+        const wBtn = document.getElementById('modalWishlistBtn');
+        if (wBtn) {
+            wBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            wBtn.style.background = 'transparent';
+            wBtn.style.color = '#ff9054';
+        }
+        
+        // Reset add to cart button
+        
+        
+        const addBtn = document.getElementById('categoryAddBagBtn');
+        const textBtn = document.getElementById('categoryAddBagText');
+        
+        let cartItems = [];
+        try { cartItems = JSON.parse(localStorage.getItem('st_cart')) || []; } catch(e){}
+        const existing = cartItems.find(i => i.name === name);
+        
+        if (addBtn) {
+            if (existing) {
+                addBtn.style.background = '#4CAF50';
+                if(textBtn) textBtn.textContent = 'Added to Cart ✓ (' + existing.qty + ')';
+            } else {
+                addBtn.style.background = 'linear-gradient(90deg, #ff9054, #ff6c2c)';
+                if(textBtn) textBtn.textContent = 'Add to Cart';
+            }
+            
+            addBtn.onclick = () => { 
+                let currentCart = [];
+                try { currentCart = JSON.parse(localStorage.getItem('st_cart')) || []; } catch(e){}
+                const itemInCart = currentCart.find(i => i.name === name);
+                
+                if (itemInCart) {
+                    if (itemInCart.qty === currentModalQty) {
+                        // Unchanged, just open cart
+                    } else {
+                        // User changed quantity via + / -, so UPDATE it!
+                        itemInCart.qty = currentModalQty;
+                        localStorage.setItem('st_cart', JSON.stringify(currentCart));
+                        if(typeof showToast === 'function') showToast('Updated quantity to ' + currentModalQty + '!');
+                        if (typeof window.renderGlobalCartSidebar === 'function') window.renderGlobalCartSidebar();
+                        if (typeof updateCartUI === 'function') updateCartUI();
+                    }
+                } else {
+                    // Not in cart, add it normally
+                    if(typeof addToCart === 'function') addToCart(name, price, img, currentModalQty); 
+                    if(typeof showToast === 'function') showToast('Added ' + currentModalQty + 'x ' + name + ' to bag!');
+                }
+                
+                addBtn.style.background = '#4CAF50';
+                if(textBtn) textBtn.textContent = 'Added to Cart ✓ (' + currentModalQty + ')';
+                
+                setTimeout(() => {
+                    document.getElementById('categoryDetailModal').classList.remove('show');
+                    document.getElementById('overlay').classList.remove('show');
+                    
+                    const sidebar = document.getElementById('cartSidebar');
+                    const over = document.getElementById('overlay');
+                    if(sidebar) sidebar.classList.add('open');
+                    if(over) over.classList.add('show');
+                }, 800);
+            };
+        }
+        
+        generateSuggestions(name);
+        
+        const modalEl = document.getElementById('categoryDetailModal');
+        if (modalEl) modalEl.classList.add('show');
+        
+        const overlayEl = document.getElementById('overlay');
+        if (overlayEl) overlayEl.classList.add('show');
+    }
+</script>
+
+
+
+<script>
+    // INTERCEPT CART LOGIC FOR LOCALSTORAGE
+    (function() {
+        if(typeof cart !== 'undefined' && typeof addToCart === 'function') {
+            // Load saved cart
+            const savedCart = JSON.parse(localStorage.getItem('st_cart'));
+            if(savedCart) {
+                cart.length = 0; // clear existing
+                savedCart.forEach(i => cart.push(i));
+            }
+            
+            function _save() { localStorage.setItem('st_cart', JSON.stringify(cart)); }
+            
+            const _origAdd = addToCart;
+            window.addToCart = function(name, price, img, qty=1) {
+                _origAdd(name, price, img, qty);
+                _save();
+            };
+            
+            const _origRemove = removeFromCart;
+            window.removeFromCart = function(index) {
+                _origRemove(index);
+                _save();
+            };
+            
+            const _origUpdate = updateCartItemQty;
+            window.updateCartItemQty = function(index, change) {
+                _origUpdate(index, change);
+                _save();
+            };
+            
+            // Re-render UI after a short delay to ensure DOM is ready
+            setTimeout(() => { if(typeof updateCartUI === 'function') updateCartUI(); }, 100);
+        }
+    })();
+</script>
+
+
+<script>
+    // SEARCH AUTO-SUGGESTIONS LOGIC
+    const productsDB = [
+        { name: 'Chocolate Truffle', category: 'cake', price: 499, img: 'cake_category_1777660447849.png' },
+        { name: 'Red Velvet Cake', category: 'cake', price: 599, img: 'recommended_cake.png' },
+        { name: 'Mango Cake', category: 'cake', price: 399, img: 'cake_category_1777660447849.png' },
+        { name: 'Black Forest', category: 'cake', price: 449, img: 'recommended_cake.png' },
+        { name: 'Chocolate Donut', category: 'donut', price: 149, img: 'donut_category_1777660467553.png' },
+        { name: 'Strawberry Donut', category: 'donut', price: 129, img: 'recommended_donut.png' },
+        { name: 'Glazed Donut', category: 'donut', price: 119, img: 'donut_category_1777660467553.png' },
+        { name: 'Caramel Donut', category: 'donut', price: 169, img: 'donut_category_1777660467553.png' },
+        { name: 'Almond Croissant', category: 'pastry', price: 189, img: 'pastry_category_1777660510169.png' },
+        { name: 'Pain au Chocolat', category: 'pastry', price: 199, img: 'recommended_pastry.png' },
+        { name: 'Berry Cheesecake', category: 'pastry', price: 249, img: 'recommended_cake.png' },
+        { name: 'Chocolate Mousse', category: 'pastry', price: 199, img: 'pastry_category_1777660510169.png' },
+        { name: 'Vanilla Bean Cone', category: 'ice cream', price: 199, img: 'icecream_category_1777660485890.png' },
+        { name: 'Mango Gelato', category: 'ice cream', price: 229, img: 'recommended_icecream.png' },
+        { name: 'Strawberry Delicious', category: 'ice cream', price: 199, img: 'recommended_icecream.png' },
+        { name: 'Iced Coffee Splash', category: 'ice cream', price: 249, img: 'icecream_category_1777660485890.png' },
+        { name: 'Cupcake Hamper', category: 'gifting', price: 899, img: 'cupcake_deal_1777660591014.png' },
+        { name: 'Premium Macarons', category: 'gifting', price: 999, img: 'macaron_deal_1777660573385.png' },
+        { name: 'Pistachio Macarons', category: 'gifting', price: 399, img: 'recommended_macaron.png' },
+        { name: 'Berry Macarons', category: 'gifting', price: 399, img: 'macaron_deal_1777660573385.png' },
+        { name: 'Vanilla Almond', category: 'ice cream', price: 199, img: 'icecream_category_1777660485890.png' },
+        { name: 'Tropical Mango', category: 'ice cream', price: 229, img: 'recommended_icecream.png' },
+        { name: 'Berry Burst', category: 'ice cream', price: 199, img: 'recommended_icecream.png' },
+        { name: 'Aura Espresso Pint', category: 'ice cream', price: 249, img: 'icecream_category_1777660485890.png' },
+        { name: 'Sweetest Delights Ice Cream', category: 'ice cream', price: 349, img: 'recommended_icecream.png' }
+    ];
+
+    function handleSearchInput(val) {
+        const container = document.getElementById('navSearchContainer');
+        const dropdown = document.getElementById('searchDropdown');
+        const searchStr = val.toLowerCase().trim();
+        
+        if (searchStr.length === 0) {
+            container.classList.remove('active');
+            return;
+        }
+        
+        const matches = typeof productsDB !== 'undefined' ? productsDB.filter(p => p.name.toLowerCase().includes(searchStr) || (p.category && p.category.toLowerCase().includes(searchStr))) : [];
+        
+        let html = '';
+        
+        let catMatch = null;
+        if (searchStr.includes('cake')) catMatch = {name: 'Cakes', url: 'cakes.html', icon: 'fa-cake-candles'};
+        else if (searchStr.includes('donut')) catMatch = {name: 'Donuts', url: 'donuts.html', icon: 'fa-circle-dot'};
+        else if (searchStr.includes('ice')) catMatch = {name: 'Ice Cream', url: 'icecream.html', icon: 'fa-ice-cream'};
+        else if (searchStr.includes('pastry') || searchStr.includes('croissant')) catMatch = {name: 'Pastries', url: 'pastries.html', icon: 'fa-cookie'};
+        else if (searchStr.includes('gift') || searchStr.includes('macaron') || searchStr.includes('cupcake')) catMatch = {name: 'Gifting & Cupcakes', url: 'gifting.html', icon: 'fa-gift'};
+        
+        if (catMatch || matches.length > 0) {
+            html += '<div class="search-group"><h5>Suggestions</h5>';
+            if (catMatch) {
+                html += `<div class="search-item" onclick="window.location.href='${catMatch.url}'" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; background:#fff5e6; border-left:4px solid var(--clr-primary);"><span style="display:flex;align-items:center;gap:10px;"><i class="fa-solid ${catMatch.icon}" style="color:var(--clr-primary); width:30px; text-align:center; font-size:1.2rem;"></i> Explore all ${catMatch.name}</span> <i class="fa-solid fa-chevron-right" style="color:#aaa;"></i></div>`;
+            }
+            matches.forEach(m => {
+                html += `<div class="search-item" onclick="if(typeof openProductModal === 'function'){openProductModal('${m.name}', 'Our signature dessert crafted perfectly.', ${m.price}, '${m.img}'); document.getElementById('navSearchContainer').classList.remove('active');} else {addToCart('${m.name}', ${m.price}, '${m.img}'); showToast('Added to bag!'); document.getElementById('navSearchContainer').classList.remove('active');}" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;"><span style="display:flex;align-items:center;gap:10px;"><img src="${m.img}" style="width:30px;height:30px;border-radius:5px;object-fit:cover;"> ${m.name}</span> <span style="color:var(--clr-primary);font-weight:bold;">₹${m.price}</span></div>`;
+            });
+            html += '</div>';
+        } else {
+            html += '<p style="color: #888; font-size: 0.9rem; padding: 10px;">No results found</p>';
+        }
+        
+        dropdown.innerHTML = html;
+        container.classList.add('active');
+    }
+
+    // Close search dropdown on outside click
+    document.addEventListener('click', (e) => {
+        const container = document.getElementById('navSearchContainer');
+        if (container && !container.contains(e.target)) {
+            container.classList.remove('active');
+        }
+    });
+
+    // Simple search interaction (Enter key)
+    const searchInputEl = document.querySelector('#searchInput');
+    if (searchInputEl) {
+        searchInputEl.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const searchStr = this.value.toLowerCase().trim();
+                if (!searchStr) return;
+                
+                let catUrl = '';
+                if (searchStr.includes('cake')) catUrl = 'cakes.html';
+                else if (searchStr.includes('donut')) catUrl = 'donuts.html';
+                else if (searchStr.includes('ice')) catUrl = 'icecream.html';
+                else if (searchStr.includes('pastry') || searchStr.includes('croissant')) catUrl = 'pastries.html';
+                else if (searchStr.includes('gift') || searchStr.includes('macaron') || searchStr.includes('cupcake')) catUrl = 'gifting.html';
+                
+                if (catUrl) {
+                    window.location.href = catUrl;
+                    return;
+                }
+                
+                const match = typeof productsDB !== 'undefined' ? productsDB.find(p => p.name.toLowerCase().includes(searchStr) || (p.category && p.category.toLowerCase().includes(searchStr))) : null;
+                
+                if (match) {
+                    if (typeof openProductModal === 'function') {
+                        openProductModal(match.name, 'Our signature dessert crafted perfectly.', match.price, match.img);
+                    } else if (typeof addToCart === 'function') {
+                        addToCart(match.name, match.price, match.img);
+                        if (typeof showToast === 'function') showToast('Added ' + match.name + ' to bag!');
+                    }
+                } else {
+                    if (typeof showToast === 'function') showToast('No exact match found for: ' + this.value);
+                }
+                
+                const container = document.getElementById('navSearchContainer');
+                if (container) container.classList.remove('active');
+                this.value = '';
+            }
+        });
+    }
+</script>
+
+<script src="dynamic_render.js"></script>
+</body>
+</html>

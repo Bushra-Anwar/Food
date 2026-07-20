@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Food- Login/Signup</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #ff6b35;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: slideDown 1s ease-out;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .main-container {
+            display: flex;
+            min-height: calc(100vh - 100px);
+        }
+        .left-sidebar {
+            flex: 1;
+            background-color: #fff3e0;
+            padding: 20px;
+            border-right: 2px solid #ff6b35;
+            overflow-y: auto;
+        }
+        .left-sidebar h2 {
+            color: #ff6b35;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .feature {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .feature img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .center-content {
+            flex: 2;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 1s ease-out;
+        }
+        .right-sidebar {
+            flex: 1;
+            background-color: #fff3e0;
+            padding: 20px;
+            border-left: 2px solid #ff6b35;
+            overflow-y: auto;
+        }
+        .right-sidebar h2 {
+            color: #ff6b35;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .ad {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .ad:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .ad img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #f7931e, #ff6b35);
+        }
+        .hidden {
+            display: none;
+        }
+        .link {
+            color: #ff6b35;
+            cursor: pointer;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .link:hover {
+            color: #f7931e;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .left-sidebar, .right-sidebar {
+                flex: none;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to E-Food</h1>
+        <p>Delicious, fresh, home-cooked meals delivered to your door!</p>
+    </header>
+
+    <div class="main-container">
+        <!-- Left Sidebar: Features of Food Making -->
+        <div class="left-sidebar">
+            <h2>Our Cooking Features</h2>
+            <div class="feature">
+                <img src="https://via.placeholder.com/300x150?text=Fresh+Ingredients" alt="Fresh Ingredients">
+                <h3>Fresh Ingredients</h3>
+                <p>We use only the freshest, locally sourced ingredients for every dish.</p>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/300x150?text=Homemade+Recipes" alt="Homemade Recipes">
+                <h3>Homemade Recipes</h3>
+                <p>Traditional recipes passed down through generations, made with love.</p>
+            </div>
+            <div class="feature">
+                <img src="https://via.placeholder.com/300x150?text=Custom+Orders" alt="Custom Orders">
+                <h3>Custom Orders</h3>
+                <p>Tailor your meal to your dietary needs and preferences.</p>
+            </div>
+        </div>
+
+        <!-- Center: Login/Signup Process -->
+        <div class="center-content">
+            <div class="container">
+                <!-- Step 1: Login Page -->
+                <div id="login-page">
+                    <h2>Login</h2>
+                    <input type="email" id="login-email" placeholder="Email" required>
+                    <input type="password" id="login-password" placeholder="Password" required>
+                    <button onclick="login()">Login</button>
+                    <p class="link" onclick="showSignup()">Don't have an account? Sign up</p>
+                    <p class="link" onclick="showResetPassword()">Forgot password?</p>
+                </div>
+
+                <!-- Step 2: Signup Page -->
+                <div id="signup-page" class="hidden">
+                    <h2>Sign Up</h2>
+                    <input type="text" id="signup-name" placeholder="Name" required>
+                    <input type="email" id="signup-email" placeholder="Email" required>
+                    <input type="password" id="signup-password" placeholder="Create Password" required>
+                    <button onclick="startSignup()">Next</button>
+                    <p class="link" onclick="showLogin()">Already have an account? Login</p>
+                </div>
+
+                <!-- Step 3: Enter Email ID (for confirmation) -->
+                <div id="email-confirm-page" class="hidden">
+                    <h2>Confirm Email</h2>
+                    <p>Please enter your email to proceed.</p>
+                    <input type="email" id="confirm-email" placeholder="Email" required>
+                    <button onclick="sendVerification()">Send Verification Code</button>
+                    <p class="link" onclick="showSignup()">Back to Signup</p>
+                </div>
+
+                <!-- Step 4: Verification Code -->
+                <div id="verification-page" class="hidden">
+                    <h2>Verify Email</h2>
+                    <p>Enter the 6-digit code sent to your email.</p>
+                    <input type="text" id="verification-code" placeholder="Verification Code" maxlength="6" required>
+                    <button onclick="verifyCode()">Verify</button>
+                    <p class="link" onclick="resendCode()">Resend Code</p>
+                </div>
+
+                <!-- Step 5: Reset Password -->
+                <div id="reset-password-page" class="hidden">
+                    <h2>Reset Password</h2>
+                    <label><input type="radio" name="reset-method" value="email" checked onclick="toggleResetMethod()"> Email</label>
+                    <label><input type="radio" name="reset-method" value="phone" onclick="toggleResetMethod()"> Phone</label>
+                    <div id="email-input">
+                        <input type="email" id="reset-email" placeholder="Email" required>
+                        <button onclick="resetPassword()">Send Reset Link</button>
+                    </div>
+                    <div id="phone-input" class="hidden">
+                        <input type="tel" id="reset-phone" placeholder="Phone Number" required>
+                        <button onclick="sendOTP()">Send OTP</button>
+                        <div id="otp-section" class="hidden">
+                            <input type="text" id="otp-code" placeholder="Enter OTP" required>
+                            <button onclick="verifyOTP()">Verify OTP</button>
+                        </div>
+                    </div>
+                    <p class="link" onclick="showLogin()">Back to Login</p>
+                </div>
+
+                <!-- Success/Welcome Page (after login/signup) -->
+                <div id="welcome-page" class="hidden">
+                    <h2>Welcome!</h2>
+                    <p>You are logged in. Enjoy your homemade meals!</p>
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar: Advertisements -->
+        <div class="right-sidebar">
+            <h2>Special Offers</h2>
+            <div class="ad">
+                <img src="https://via.placeholder.com/300x150?text=Free+Delivery" alt="Free Delivery">
+                <h3>Free Delivery on First Order!</h3>
+                <p>Sign up today and get free delivery on your first homemade meal.</p>
+            </div>
+            <div class="ad">
+                <img src="https://via.placeholder.com/300x150?text=Discount+20%" alt="20% Discount">
+                <h3>20% Off Your Next Meal</h3>
+                <p>Use code HOMEMADE20 for exclusive discounts.</p>
+            </div>
+            <div class="ad">
+                <img src="https://via.placeholder.com/300x150?text=Chef+Special" alt="Chef Special">
+                <h3>Chef's Special of the Week</h3>
+                <p>Try our featured dish: Grandma's Apple Pie – only ₹15!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate logged-in state (use localStorage for persistence)
+        let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        let userEmail = localStorage.getItem('userEmail') || '';
+        let userPassword = localStorage.getItem('userPassword') || ''; // Store password for simulation
+        let verificationCode = ''; // Simulated code (in real app, generate and send via email)
+        let otpCode = ''; // For phone OTP
+
+        // Show pages
+        function showLogin() {
+            hideAll();
+            document.getElementById('login-page').classList.remove('hidden');
+        }
+
+        function showSignup() {
+            hideAll();
+            document.getElementById('signup-page').classList.remove('hidden');
+        }
+
+        function showEmailConfirm() {
+            hideAll();
+            document.getElementById('email-confirm-page').classList.remove('hidden');
+        }
+
+        function showVerification() {
+            hideAll();
+            document.getElementById('verification-page').classList.remove('hidden');
+        }
+
+        function showResetPassword() {
+            hideAll();
+            document.getElementById('reset-password-page').classList.remove('hidden');
+        }
+
+                // Simulate account creation
+                localStorage.setItem('isLoggedIn', 'true');
+                isLoggedIn = true;
+                showWelcome();
+            } else {
+                alert('Invalid code.');
+            }
+        }
+
+        // Resend Code
+        function resendCode() {
+            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            alert(`New code sent: ${verificationCode}`);
+        }
+
+        // Toggle reset method
+        function toggleResetMethod() {
+            const emailInput = document.getElementById('email-input');
+            const phoneInput = document.getElementById('phone-input');
+            const emailRadio = document.querySelector('input[name="reset-method"][value="email"]');
+            const phoneRadio = document.querySelector('input[name="reset-method"][value="phone"]');
+            
+            if (emailRadio.checked) {
+                emailInput.classList.remove('hidden');
+                phoneInput.classList.add('hidden');
+            } else if (phoneRadio.checked) {
+                emailInput.classList.add('hidden');
+                phoneInput.classList.remove('hidden');
+                document.getElementById('otp-section').classList.add('hidden'); // Hide OTP section when switching
+            }
+        }
+
+        // Reset Password (Email)
+        function resetPassword() {
+            const email = document.getElementById('reset-email').value;
+            if (email) {
+                alert(`Password reset link sent to ${email}.`); // In real app, send email
+                showLogin();
+            } else {
+                alert('Please enter your email.');
+            }
+        }
+
+        // Send OTP (Phone)
+        function sendOTP() {
+            const phone = document.getElementById('reset-phone').value;
+            if (phone) {
+                otpCode = Math.floor(100000 + Math.random() * 900000).toString(); // Simulated OTP
+                alert(`OTP sent to ${phone}: ${otpCode}`); // In real app, send via SMS
+                document.getElementById('otp-section').classList.remove('hidden');
+            } else {
+                alert('Please enter your phone number.');
+            }
+        }
+
+        // Verify OTP
+        function verifyOTP() {
+            const otp = document.getElementById('otp-code').value;
+            if (otp === otpCode) {
+                alert('OTP verified! You can now reset your password.');
+                // In a real app, proceed to password reset form
+                showLogin();
+            } else {
+                alert('Invalid OTP. Please try again.');
+            }
+        }
+
+        // Logout
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userPassword'); // Clear stored password
+            isLoggedIn = false;
+            userEmail = '';
+            userPassword = '';
+            showLogin();
+        }
+    </script>
+
+<script>
+    // INTERCEPT CART LOGIC FOR LOCALSTORAGE
+    (function() {
+        if(typeof cart !== 'undefined' && typeof addToCart === 'function') {
+            // Load saved cart
+            const savedCart = JSON.parse(localStorage.getItem('st_cart'));
+            if(savedCart) {
+                cart.length = 0; // clear existing
+                savedCart.forEach(i => cart.push(i));
+            }
+            
+            function _save() { localStorage.setItem('st_cart', JSON.stringify(cart)); }
+            
+            const _origAdd = addToCart;
+            window.addToCart = function(name, price, img, qty=1) {
+                _origAdd(name, price, img, qty);
+                _save();
+            };
+            
+            const _origRemove = removeFromCart;
+            window.removeFromCart = function(index) {
+                _origRemove(index);
+                _save();
+            };
+            
+            const _origUpdate = updateCartItemQty;
+            window.updateCartItemQty = function(index, change) {
+                _origUpdate(index, change);
+                _save();
+            };
+            
+            // Re-render UI after a short delay to ensure DOM is ready
+            setTimeout(() => { if(typeof updateCartUI === 'function') updateCartUI(); }, 100);
+        }
+    })();
+</script>
+
+
+
+
+<script>
+    let currentModalQty = 1;
+    let currentModalBasePrice = 0;
+    
+    function changeModalQty(change) {
+        currentModalQty += change;
+        if (currentModalQty < 1) currentModalQty = 1;
+        const qtyValEl = document.getElementById('modalQtyVal');
+        if (qtyValEl) qtyValEl.textContent = currentModalQty;
+        
+        const totalEl = document.getElementById('modalTotalPrice');
+        if (totalEl && currentModalBasePrice) {
+            totalEl.textContent = '₹' + (currentModalBasePrice * currentModalQty);
+        }
+    }
+
+    function toggleWishlist(btn) {
+        if (btn.getAttribute('data-wished') !== 'true') {
+            btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
+            btn.style.background = '#ff9054';
+            btn.style.color = '#fff';
+            btn.setAttribute('data-wished', 'true');
+            if(typeof showToast === 'function') showToast('Added to Wishlist!');
+        } else {
+            btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            btn.style.background = 'transparent';
+            btn.style.color = '#ff9054';
+            btn.setAttribute('data-wished', 'false');
+            if(typeof showToast === 'function') showToast('Removed from Wishlist');
+        }
+    }
+
+    function generateSuggestions(name) {
+        const n = name.toLowerCase();
+        let html = '';
+        let title = 'Add Drinks';
+        
+        if (n.includes('cake') || n.includes('cupcake')) {
+            title = 'Add Party Essentials';
+            html = `
+                <div onclick="showToast('Magic Candles Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1532054944983-6c820061e860?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Party Popper Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1530103862676-de8892b12a1f?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Happy Birthday Tag Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1614088636402-40f41334c9c1?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        } else if (n.includes('ice cream') || n.includes('gelato')) {
+            title = 'Add Toppings';
+            html = `
+                <div onclick="showToast('Choco Chips Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1622329241951-40995085d7b5?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Caramel Syrup Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1596700816912-ee98274719c8?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Waffle Cone Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1559182582-77eb93108ee8?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        } else if (n.includes('macaron') || n.includes('pastry') || n.includes('donut')) {
+            title = 'Add Beverages';
+            html = `
+                <div onclick="showToast('Hot Coffee Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Iced Latte Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1517701550927-30cfcb64db88?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Berry Shake Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1623065422900-0587b1c3fa4a?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        } else {
+            title = 'Add Drinks';
+            html = `
+                <div onclick="showToast('Strawberry Splash Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1623065422900-0587b1c3fa4a?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Iced Coffee Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1517701550927-30cfcb64db88?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+        }
+        
+        const titleEl = document.getElementById('suggestionsTitle');
+        if (titleEl) titleEl.textContent = title;
+        
+        const suggEl = document.getElementById('modalSuggestions');
+        if (suggEl) suggEl.innerHTML = html;
+    }
+
+    function openProductModal(name, desc, price, img) {
+        currentModalQty = 1;
+        currentModalBasePrice = price;
+        
+        const qtyValEl = document.getElementById('modalQtyVal');
+        if (qtyValEl) qtyValEl.textContent = currentModalQty;
+
+        const mainNameEl = document.getElementById('categoryMainName');
+        if (mainNameEl) mainNameEl.textContent = name;
+        
+        const mainImgEl = document.getElementById('categoryMainImg');
+        if (mainImgEl) {
+            mainImgEl.src = img;
+            mainImgEl.alt = name;
+        }
+        
+        const mainDescEl = document.getElementById('categoryMainDesc');
+        if (mainDescEl) mainDescEl.textContent = desc || 'A classic delight marvel of pastry craftsmanship. Handcrafted with perfection for any celebration, big or small.';
+        
+        const mainPriceEl = document.getElementById('categoryMainPrice');
+        if (mainPriceEl) mainPriceEl.textContent = '₹' + price;
+        
+        const totalEl = document.getElementById('modalTotalPrice');
+        if (totalEl) totalEl.textContent = '₹' + price;
+        
+        // Reset wishlist button
+        const wBtn = document.getElementById('modalWishlistBtn');
+        if (wBtn) {
+            wBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+            wBtn.style.background = 'transparent';
+            wBtn.style.color = '#ff9054';
+        }
+        
+        // Reset add to cart button
+        
+        
+        const addBtn = document.getElementById('categoryAddBagBtn');
+        const textBtn = document.getElementById('categoryAddBagText');
+        
+        let cartItems = [];
+        try { cartItems = JSON.parse(localStorage.getItem('st_cart')) || []; } catch(e){}
+        const existing = cartItems.find(i => i.name === name);
+        
+        if (addBtn) {
+            if (existing) {
+                addBtn.style.background = '#4CAF50';
+                if(textBtn) textBtn.textContent = 'Added to Cart ✓ (' + existing.qty + ')';
+            } else {
+                addBtn.style.background = 'linear-gradient(90deg, #ff9054, #ff6c2c)';
+                if(textBtn) textBtn.textContent = 'Add to Cart';
+            }
+            
+            addBtn.onclick = () => { 
+                let currentCart = [];
+                try { currentCart = JSON.parse(localStorage.getItem('st_cart')) || []; } catch(e){}
+                const itemInCart = currentCart.find(i => i.name === name);
+                
+                if (itemInCart) {
+                    if (itemInCart.qty === currentModalQty) {
+                        // Unchanged, just open cart
+                    } else {
+                        // User changed quantity via + / -, so UPDATE it!
+                        itemInCart.qty = currentModalQty;
+                        localStorage.setItem('st_cart', JSON.stringify(currentCart));
+                        if(typeof showToast === 'function') showToast('Updated quantity to ' + currentModalQty + '!');
+                        if (typeof window.renderGlobalCartSidebar === 'function') window.renderGlobalCartSidebar();
+                        if (typeof updateCartUI === 'function') updateCartUI();
+                    }
+                } else {
+                    // Not in cart, add it normally
+                    if(typeof addToCart === 'function') addToCart(name, price, img, currentModalQty); 
+                    if(typeof showToast === 'function') showToast('Added ' + currentModalQty + 'x ' + name + ' to bag!');
+                }
+                
+                addBtn.style.background = '#4CAF50';
+                if(textBtn) textBtn.textContent = 'Added to Cart ✓ (' + currentModalQty + ')';
+                
+                setTimeout(() => {
+                    document.getElementById('categoryDetailModal').classList.remove('show');
+                    document.getElementById('overlay').classList.remove('show');
+                    
+                    const sidebar = document.getElementById('cartSidebar');
+                    const over = document.getElementById('overlay');
+                    if(sidebar) sidebar.classList.add('open');
+                    if(over) over.classList.add('show');
+                }, 800);
+            };
+        }
+        
+        generateSuggestions(name);
+        
+        const modalEl = document.getElementById('categoryDetailModal');
+        if (modalEl) modalEl.classList.add('show');
+        
+        const overlayEl = document.getElementById('overlay');
+        if (overlayEl) overlayEl.classList.add('show');
+    }
+</script>
+
+
+
+<script src="dynamic_render.js"></script>
+</body>
+</html>

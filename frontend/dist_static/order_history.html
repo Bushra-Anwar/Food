@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Orders | SweetTreats</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background: #fdfaf5; margin: 0; padding: 0; }
+        .page-header { background: #fff; padding: 20px 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: space-between; }
+        .page-header h1 { font-family: 'Playfair Display', serif; color: #4a3b32; font-size: 2rem; margin: 0; }
+        .back-btn { color: #8b5a33; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .back-btn:hover { color: #704728; }
+
+        .orders-container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
+        .order-card { background: #fff; border-radius: 16px; box-shadow: 0 10px 30px rgba(74, 59, 50, 0.08); padding: 30px; margin-bottom: 30px; transition: 0.3s; }
+        .order-card:hover { transform: translateY(-5px); box-shadow: 0 15px 35px rgba(74, 59, 50, 0.12); }
+        .order-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f9f9f9; padding-bottom: 20px; margin-bottom: 20px; }
+        .order-id { font-size: 1.2rem; font-weight: bold; color: #4a3b32; }
+        .order-date { color: #888; font-size: 0.95rem; }
+        .order-status { background: #e0e7ff; color: #3730a3; padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; text-transform: uppercase; }
+        
+        .order-items { margin-bottom: 20px; }
+        .item-row { display: flex; align-items: center; gap: 20px; margin-bottom: 15px; }
+        .item-img { width: 60px; height: 60px; border-radius: 10px; object-fit: cover; }
+        .item-details { flex: 1; }
+        .item-name { font-weight: bold; color: #333; font-size: 1.05rem; }
+        .item-qty-price { color: #666; font-size: 0.95rem; }
+        .item-total { font-weight: bold; color: #4a3b32; font-size: 1.1rem; }
+
+        .order-footer { display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #f9f9f9; padding-top: 20px; }
+        .order-total { font-size: 1.4rem; font-weight: bold; color: #8b5a33; }
+        .btn-invoice { background: #8b5a33; color: #fff; border: none; padding: 12px 25px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-invoice:hover { background: #704728; }
+
+        /* Invoice Printable Area */
+        #invoice-print-area { display: none; }
+        
+        @media print {
+            body * { visibility: hidden; }
+            #invoice-print-area, #invoice-print-area * { visibility: visible; }
+            #invoice-print-area { display: block; position: absolute; left: 0; top: 0; width: 100%; padding: 40px; background: #fff; }
+            .invoice-header { text-align: center; margin-bottom: 40px; border-bottom: 2px solid #000; padding-bottom: 20px; }
+            .invoice-header h2 { font-size: 2.5rem; margin: 0; }
+            .invoice-details { display: flex; justify-content: space-between; margin-bottom: 40px; }
+            .invoice-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+            .invoice-table th, .invoice-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+            .invoice-table th { background: #f5f5f5; font-weight: bold; }
+            .invoice-total { text-align: right; font-size: 1.5rem; font-weight: bold; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-header">
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Shop</a>
+        <h1>My Orders</h1>
+        <div style="width: 100px;"></div> <!-- Spacer -->
+    </div>
+
+    <div class="orders-container" id="orders-container">
+        <!-- Rendered via JS -->
+    </div>
+
+    <!-- Hidden Invoice Template for Printing -->
+    <div id="invoice-print-area">
+        <div class="invoice-header">
+            <h2>SWEET TREATS</h2>
+            <p>Premium Desserts & Bakery</p>
+            <p>123 Bakery Lane, Food City</p>
+        </div>
+        <div class="invoice-details">
+            <div>
+                <strong>Invoice To:</strong><br>
+                Customer<br>
+                user@example.com
+            </div>
+            <div style="text-align: right;">
+                <strong id="print-order-id">Invoice #ORD-00000</strong><br>
+                Date: <span id="print-order-date">2026-07-19</span><br>
+                Status: <strong>Paid</strong>
+            </div>
+        </div>
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Unit Price</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="print-order-items">
+                <!-- JS populated -->
+            </tbody>
+        </table>
+        <div style="text-align: right; margin-bottom: 10px;">Subtotal: <span id="print-subtotal">₹0</span></div>
+        <div style="text-align: right; margin-bottom: 10px;">Delivery Fee: ₹50</div>
+        <div class="invoice-total">
+            Total Amount: <span id="print-total">₹0</span>
+        </div>
+        <div style="margin-top: 60px; text-align: center; color: #666;">
+            <p>Thank you for shopping with SweetTreats!</p>
+            <p>For any queries, contact support@sweettreats.com</p>
+        </div>
+    </div>
+
+    <script>
+        const orders = JSON.parse(localStorage.getItem('st_orders')) || [];
+
+        function renderOrders() {
+            const container = document.getElementById('orders-container');
+            
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 80px 20px;">
+                        <i class="fa-solid fa-box-open" style="font-size: 5rem; color: #ddd; margin-bottom: 20px;"></i>
+                        <h2 style="color: #666; font-family: 'Playfair Display', serif;">No orders found</h2>
+                        <p style="color: #999; margin-bottom: 30px;">Looks like you haven't placed any orders yet.</p>
+                        <a href="index.html" style="background: #8b5a33; color: #fff; padding: 12px 30px; text-decoration: none; border-radius: 30px; font-weight: bold;">Start Shopping</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Sort newest first
+            const sortedOrders = [...orders].reverse();
+            let html = '';
+
+            sortedOrders.forEach((order, index) => {
+                const dateObj = new Date(order.date);
+                const dateStr = dateObj.toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                
+                let itemsHtml = '';
+                order.items.forEach(item => {
+                    itemsHtml += `
+                        <div class="item-row">
+                            <img src="${item.img}" class="item-img" alt="${item.name}">
+                            <div class="item-details">
+                                <div class="item-name">${item.name}</div>
+                                <div class="item-qty-price">${item.qty} x ₹${item.price}</div>
+                            </div>
+                            <div class="item-total">₹${item.qty * item.price}</div>
+                        </div>
+                    `;
+                });
+
+                // Passing original index from the sorted array might require finding real index, but since we just need order object, we can stringify and pass. 
+                // Or better, just pass the order ID.
+                html += `
+                    <div class="order-card">
+                        <div class="order-header">
+                            <div>
+                                <div class="order-id">${order.id}</div>
+                                <div class="order-date">Placed on ${dateStr}</div>
+                            </div>
+                            <div class="order-status">${order.status || 'Processing'}</div>
+                        </div>
+                        <div class="order-items">
+                            ${itemsHtml}
+                        </div>
+                        <div class="order-footer">
+                            <div class="order-total">Total: ₹${order.total}</div>
+                            <button class="btn-invoice" onclick="downloadInvoice('${order.id}')">
+                                <i class="fa-solid fa-file-invoice"></i> Download Invoice
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function downloadInvoice(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            const dateObj = new Date(order.date);
+            
+            document.getElementById('print-order-id').textContent = 'Invoice ' + order.id;
+            document.getElementById('print-order-date').textContent = dateObj.toLocaleDateString('en-IN');
+            
+            let itemsHtml = '';
+            let subtotal = 0;
+            
+            order.items.forEach(item => {
+                const lineTotal = item.qty * item.price;
+                subtotal += lineTotal;
+                itemsHtml += `
+                    <tr>
+                        <td>${item.name}</td>
+                        <td>${item.qty}</td>
+                        <td>₹${item.price}</td>
+                        <td>₹${lineTotal}</td>
+                    </tr>
+                `;
+            });
+            
+            document.getElementById('print-order-items').innerHTML = itemsHtml;
+            document.getElementById('print-subtotal').textContent = '₹' + subtotal;
+            document.getElementById('print-total').textContent = '₹' + order.total;
+
+            // Trigger print (which user can save as PDF)
+            window.print();
+        }
+
+        renderOrders();
+    </script>
+<script src="dynamic_render.js"></script>
+</body>
+</html>

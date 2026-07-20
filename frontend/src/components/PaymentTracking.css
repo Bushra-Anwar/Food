@@ -1,0 +1,307 @@
+.payment-tracking-wrapper {
+  animation: fadeIn 0.4s ease-out;
+  color: var(--text-primary);
+}
+
+.track-dashboard, .reminders-view, .recon-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.track-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.track-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.track-subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Table */
+.track-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.track-table th {
+  text-align: left;
+  padding: 1rem 1.5rem;
+  background: var(--hover-bg);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.track-table td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.customer-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* Aging Bar */
+.aging-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 250px;
+}
+
+.aging-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.aging-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--hover-bg);
+}
+
+.aging-segment {
+  height: 100%;
+}
+
+/* Score Badge */
+.score-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.score-badge {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.risk-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.risk-label.low { color: #10b981; }
+.risk-label.high { color: #ef4444; }
+
+/* Status Badges */
+.status-badge.matched { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.status-badge.partially-matched { background: rgba(245, 158, 11, 0.1); color: #f59e0b; }
+.status-badge.unmatched { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
+
+/* Workflow Container */
+.workflow-container {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.workflow-sidebar {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+}
+
+.workflow-sidebar h3 {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.workflow-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.workflow-steps::before {
+  content: '';
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 9px;
+  width: 2px;
+  background: var(--border-color);
+  z-index: 0;
+}
+
+.workflow-step {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.workflow-step.active {
+  opacity: 1;
+}
+
+.step-marker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid var(--bg-secondary);
+}
+
+.workflow-step div strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.workflow-step div span {
+  font-size: 0.85rem;
+}
+
+/* Reminder Action Area */
+.reminder-action-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.action-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.action-header h3 {
+  font-size: 1.4rem;
+}
+
+.badge-red {
+  background: #ef4444;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.reminder-card {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.reminder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cust-info strong {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.reminder-header .text-red {
+  font-size: 1.5rem;
+}
+
+.communication-channels {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.channel-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.channel-btn:hover { background: var(--hover-bg); }
+.channel-btn.whatsapp { color: #10b981; border-color: rgba(16, 185, 129, 0.3); }
+.channel-btn.whatsapp:hover { background: rgba(16, 185, 129, 0.1); }
+.channel-btn.call { color: #8b5cf6; border-color: rgba(139, 92, 246, 0.3); }
+.channel-btn.call:hover { background: rgba(139, 92, 246, 0.1); }
+
+.followup-notes {
+  display: flex;
+  gap: 1rem;
+  background: var(--hover-bg);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.followup-notes input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  color: var(--text-primary);
+}
+
+/* AI Reconciliation Confidence */
+.confidence-cell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-bg {
+  width: 100px;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--hover-bg);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+}
+
+@media (max-width: 1024px) {
+  .workflow-container {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetTreats | Premium Dessert Marketplace</title>
+    <meta name="description"
+        content="Discover the best artisanal desserts, cakes, and pastries from top bakers. Biggest deals on luxury sweets.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="custom_features.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" style="position: relative;">
+        <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">SWEET TREATS</div>
+        <ul class="nav-links">
+            <li><a href="index.html" style="font-weight:bold; color:var(--clr-text-main);">Home</a></li>
+            <li class="has-megamenu">
+                <a href="cakes.html">Cakes</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Birthday Cakes</li>
+                            <li>Anniversary Cakes</li>
+                            <li>Wedding Cakes</li>
+                            <li>Eggless Cakes</li>
+                            <li>Chocolate Cakes</li>
+                            <li>Fruit Cakes</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card"
+                                onclick="openProductModal('Chocolate Truffle', 'Our signature dessert crafted perfectly.', 499, 'cake_category_1777660447849.png')">
+                                <img src="cake_category_1777660447849.png" alt="Chocolate Truffle">
+                                <p>Chocolate Truffle</p>
+                                <span>₹499</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card"
+                                onclick="openProductModal('Red Velvet Cake', 'Our signature dessert crafted perfectly.', 599, 'recommended_cake.png')">
+                                <img src="recommended_cake.png" alt="Red Velvet">
+                                <p>Red Velvet Cake</p>
+                                <span>₹599</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card"
+                                onclick="openProductModal('Mango Cake', 'Our signature dessert crafted perfectly.', 399, 'cake_category_1777660447849.png')">
+                                <img src="cake_category_1777660447849.png" alt="Mango Cake">
+                                <p>Mango Cake</p>
+                                <span>₹399</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card"
+                                onclick="openProductModal('Black Forest', 'Our signature dessert crafted perfectly.', 449, 'recommended_cake.png')">
+                                <img src="recommended_cake.png" alt="Black Forest">
+                                <p>Black Forest</p>
+                                <span>₹449</span>
+                                <button>Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner">
+                            <h4>Flat 20% OFF</h4>
+                            <p>on Birthday Cakes</p>
+                            <button onclick="window.location.href='cakes.html'">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="donuts.html">Donuts</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Chocolate</li>
+                            <li>Strawberry</li>
+                            <li>Glazed</li>
+                            <li>Cookies & Cream</li>
+                            <li>Sprinkles</li>
+                            <li>Nut Filled</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card"
+                                onclick="openProductModal('Chocolate Donut', 'Our signature dessert crafted perfectly.', 149, 'donut_category_1777660467553.png')">
+                                <img src="donut_category_1777660467553.png" alt="Chocolate Donut">
+                                <p>Chocolate Donut</p>
+                                <span>₹149</span>
+                                <button>Add to Cart</button>
+                            </div>
+                            <div class="mega-card"
+                                onclick="openProductModal('Strawberry Donut', 'Our signature dessert crafted perfectly.', 129, 'recommended_donut.png')">
+                                <img src="recommended_donut.png" alt="Strawberry Donut">
+                                <p>Strawberry Donut</p>
+                                <span>₹129</span>
+                                <button>Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner" style="background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);">
+                            <h4>Buy 2 Get 1 Free</h4>
+                            <p>Fresh Donuts</p>
+                            <button onclick="window.location.href='donuts.html'">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="pastries.html">Pastries</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Chocolate Pastry</li>
+                            <li>Strawberry</li>
+                            <li>Pineapple</li>
+                            <li>Coffee</li>
+                            <li>Cheesecake Slice</li>
+                            <li>Tiramisu</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card" onclick="window.location.href='pastries.html'">
+                                <img src="pastry_category_1777660510169.png" alt="Croissant">
+                                <p>Almond Croissant</p>
+                                <span>₹189</span>
+                                <button>View Details</button>
+                            </div>
+                            <div class="mega-card" onclick="window.location.href='pastries.html'">
+                                <img src="recommended_pastry.png" alt="Pain au Chocolat">
+                                <p>Pain au Chocolat</p>
+                                <span>₹199</span>
+                                <button>View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner"
+                            style="background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); color: #333; border: 1px solid #ddd;">
+                            <h4>Mini Pastries</h4>
+                            <p>Premium Collection</p>
+                            <button onclick="window.location.href='pastries.html'"
+                                style="background: #333; color: #fff;">Explore All</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="icecream.html">Ice Cream</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Chocolate</li>
+                            <li>Strawberry</li>
+                            <li>Mango</li>
+                            <li>Cookies & Cream</li>
+                            <li>Sundaes</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card"
+                                onclick="openProductModal('Vanilla Cone', 'Our signature dessert crafted perfectly.', 199, 'icecream_category_1777660485890.png')"
+                                style="cursor:pointer;">
+                                <img src="icecream_category_1777660485890.png" alt="Vanilla Cone">
+                                <p>Vanilla Cone</p>
+                                <span>₹199</span>
+                                <button>Add</button>
+                            </div>
+                            <div class="mega-card"
+                                onclick="openProductModal('Mango Gelato', 'Our signature dessert crafted perfectly.', 229, 'recommended_icecream.png')"
+                                style="cursor:pointer;">
+                                <img src="recommended_icecream.png" alt="Mango Gelato">
+                                <p>Mango Gelato</p>
+                                <span>₹229</span>
+                                <button>Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+                            <h4>Buy 1 Get 1</h4>
+                            <p>Summer Specials</p>
+                            <button onclick="window.location.href='icecream.html'">Shop Ice Creams</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="has-megamenu">
+                <a href="gifting.html">Gifting</a>
+                <div class="megamenu">
+                    <div class="mega-left">
+                        <ul>
+                            <li>Cake + Flowers</li>
+                            <li>Chocolate Hampers</li>
+                            <li>Teddy Combos</li>
+                            <li>Greeting Cards</li>
+                            <li>Party Decor</li>
+                        </ul>
+                    </div>
+                    <div class="mega-center">
+                        <div class="mega-grid">
+                            <div class="mega-card"
+                                onclick="openProductModal('Cupcake Hamper', 'Our signature dessert crafted perfectly.', 899, 'cupcake_deal_1777660591014.png')"
+                                style="cursor:pointer;">
+                                <img src="cupcake_deal_1777660591014.png" alt="Gift Hamper">
+                                <p>Cupcake Hamper</p>
+                                <span>₹899</span>
+                                <button>Add</button>
+                            </div>
+                            <div class="mega-card"
+                                onclick="openProductModal('Premium Macarons', 'Our signature dessert crafted perfectly.', 999, 'macaron_deal_1777660573385.png')"
+                                style="cursor:pointer;">
+                                <img src="macaron_deal_1777660573385.png" alt="Macaron Box">
+                                <p>Premium Macarons</p>
+                                <span>₹999</span>
+                                <button>Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mega-right">
+                        <div class="mega-banner" style="background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);">
+                            <h4>Perfect Surprise</h4>
+                            <p>Valentine's Collection</p>
+                            <button onclick="window.location.href='gifting.html'">View Gifts</button>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="nav-search search-container" id="navSearchContainer">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Search for desserts, brands and more"
+                oninput="handleSearchInput(this.value)">
+            <div class="search-dropdown" id="searchDropdown">
+                <!-- Javascript will populate suggestions here -->
+            </div>
+        </div>
+        <div class="nav-actions">
+            <div class="action-item" onclick="window.location.href='menu.html'" style="cursor:pointer;">
+                <i class="fa-solid fa-bars"></i>
+                <span>Menu</span>
+            </div>
+            <div class="action-item" onclick="window.location.href='login.html'" style="cursor:pointer;">
+                <i class="fa-regular fa-user"></i>
+                <span>Login</span>
+            </div>
+            <div class="action-item" onclick="window.location.href='order_history.html'" style="cursor:pointer;">
+                <i class="fa-solid fa-receipt"></i>
+                <span>Orders</span>
+            </div>
+            <div class="action-item" onclick="window.location.href='wishlist.html'" style="cursor:pointer;">
+                <i class="fa-regular fa-heart"></i>
+                <span>Wishlist</span>
+            </div>
+            <div class="action-item cart-hover-container">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Bag</span>
+                <div class="cart-dropdown">
+                    <h4>🛒 My Bag</h4>
+                    <div class="cart-hover-items" id="cartHoverItems">
+                        <!-- JS populated -->
+                        <p style="text-align: center; color: #888; font-size: 0.9rem;">Your bag is empty</p>
+                    </div>
+                    <div class="cart-hover-footer">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                            <span>Subtotal</span>
+                            <strong id="cartHoverTotal">₹0</strong>
+                        </div>
+                        <button onclick="openCheckout()">Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- LUXURY HERO START -->
+        <style>
+            .luxury-hero {
+                position: relative;
+                background: #fdfaf6;
+                padding: 100px 5%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                overflow: hidden;
+                border-bottom: 1px solid #eee;
+            }
+
+            .luxury-hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 45%;
+                background: url('cake_category_1777660447849.png') no-repeat center center / cover;
+                z-index: 1;
+                opacity: 0.9;
+                border-radius: 0 300px 300px 0;
+                box-shadow: 10px 0 50px rgba(0, 0, 0, 0.1);
+            }
+
+            .luxury-hero-text {
+                flex: 0 0 55%;
+                padding-left: 80px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .luxury-hero-text h1 {
+                font-family: 'Times New Roman', serif;
+                font-size: 3.5rem;
+                color: #2c2925;
+                line-height: 1.2;
+                margin-bottom: 25px;
+                font-weight: normal;
+            }
+
+            .luxury-hero-text p {
+                font-size: 1.2rem;
+                color: #5a544c;
+                margin-bottom: 40px;
+                line-height: 1.6;
+            }
+
+            .btn-discover {
+                background: linear-gradient(90deg, #d4af37, #f3e5ab);
+                color: #2c2925;
+                border: none;
+                padding: 15px 40px;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+                border-radius: 3px;
+                box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                transition: 0.3s;
+            }
+
+            .btn-discover:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px rgba(212, 175, 55, 0.5);
+            }
+        </style>
+        <section class="luxury-hero">
+            <div class="luxury-hero-text">
+                <h1>ARTISAN CHOCOLATE,<br>EXQUISITE PASTRIES &<br>MOMENTS OF<br>PURE INDULGENCE.</h1>
+                <p>Experience the artistry of luxury desserts,<br>handcrafted with the finest ingredients.</p>
+                <button class="btn-discover" onclick="window.location.href='discover.html'">DISCOVER OUR
+                    COLLECTIONS</button>
+            </div>
+        </section>
+        <!-- LUXURY HERO END -->
+
+        <div class="container">
+            <!-- CATEGORIES TO CRAVE -->
+            <h2 class="section-title">Categories To Crave</h2>
+            <div class="categories-flex">
+                <div class="category-item">
+                    <div class="category-img"><img src="cake_category_1777660447849.png" alt="Cakes"></div>
+                    <span class="category-name">Cakes</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-img"><img src="donut_category_1777660467553.png" alt="Donuts"></div>
+                    <span class="category-name">Donuts</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-img"><img src="icecream_category_1777660485890.png" alt="Ice Cream"></div>
+                    <span class="category-name">Ice Cream</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-img"><img src="pastry_category_1777660510169.png" alt="Pastries"></div>
+                    <span class="category-name">Pastries</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-img"><img src="cupcake_deal_1777660591014.png" alt="Cupcakes"></div>
+                    <span class="category-name">Cupcakes</span>
+                </div>
+                <div class="category-item">
+                    <div class="category-img"><img src="macaron_deal_1777660573385.png" alt="Macarons"></div>
+                    <span class="category-name">Macarons</span>
+                </div>
+            </div>
+
+            <!-- BIGGEST DEALS SECTION -->
+            <h2 class="section-title">Biggest Deals On Top Treats</h2>
+            <div class="deals-grid">
+                <div class="deal-card">
+                    <div class="deal-img-wrapper"><img src="brownie_deal_1777660550780.png" alt="The Brownie Box"></div>
+                    <div class="deal-brand">The Brownie Box</div>
+                    <div class="deal-offer">30-60% OFF</div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-img-wrapper"><img src="macaron_deal_1777660573385.png" alt="Parisian Delights">
+                    </div>
+                    <div class="deal-brand">Parisian Delights</div>
+                    <div class="deal-offer">Min. 50% OFF</div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-img-wrapper"><img src="cupcake_deal_1777660591014.png" alt="Sugar Rush"></div>
+                    <div class="deal-brand">Sugar Rush</div>
+                    <div class="deal-offer">Up To 40% OFF</div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-img-wrapper"><img src="cake_category_1777660447849.png" alt="Cake Masters"></div>
+                    <div class="deal-brand">Cake Masters</div>
+                    <div class="deal-offer">Min. 30% OFF</div>
+                </div>
+                <div class="deal-card">
+                    <div class="deal-img-wrapper"><img src="icecream_category_1777660485890.png" alt="Frozen Bliss">
+                    </div>
+                    <div class="deal-brand">Frozen Bliss</div>
+                    <div class="deal-offer">Buy 1 Get 1</div>
+                </div>
+            </div>
+
+            <!-- FEATURED BRAND BANNER -->
+            <div class="brand-banner">
+                <div class="brand-banner-img" style="cursor: pointer;" onclick="window.location.href='cakes.html'">
+                    <img src="hero_dessert_banner_1777660313545.png" alt="Featured Brand"
+                        style="height: 400px; object-fit: cover;">
+                </div>
+                <div class="brand-banner-content">
+                    <h3 class="brand-banner-name">THE CHOCOLATE ROOM</h3>
+                    <p class="brand-banner-offer">Luxury Truffles & Cakes<br><b>Min. 60% OFF</b></p>
+                    <a href="javascript:void(0)" class="brand-explore" onclick="openCakeCustomizer()" style="background: linear-gradient(90deg, #d4af37, #f3e5ab); color: #2c2925; padding: 12px 25px; border-radius: 30px; font-weight: bold; text-decoration: none; box-shadow: 0 5px 15px rgba(212,175,55,0.3); display: inline-block;">Customize Your Cake <i class="fa-solid fa-wand-magic-sparkles"></i></a>
+                </div>
+            </div>
+
+            <!-- SIGNATURE POSTERS -->
+            <h2 class="signature-title">Signature Masterpieces</h2>
+            <div class="signature-grid">
+                <!-- Poster 1 -->
+                <div class="poster-card"
+                    onclick="addToCart('Iced Coffee Splash', 249, 'icecream_category_1777660485890.png', 1); openCheckout();">
+                    <img src="icecream_category_1777660485890.png" class="bg-poster" alt="Iced Coffee Splash">
+                    <div class="poster-overlay"></div>
+                    <div class="vertical-text">ICED</div>
+                    <div class="poster-content">
+                        <h3>Iced Coffee Splash</h3>
+                        <p>Relax your mind with a cup of refreshing coffee. Rich, creamy, and instantly wakes you right
+                            up!</p>
+                        <div class="poster-price">₹249</div>
+                        <button class="btn-poster">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Poster 2 -->
+                <div class="poster-card"
+                    onclick="addToCart('Strawberry Delicious', 199, 'recommended_icecream.png', 1); openCheckout();">
+                    <img src="recommended_icecream.png" class="bg-poster" alt="Strawberry Delicious">
+                    <div class="poster-overlay"></div>
+                    <div class="vertical-text">BERRY</div>
+                    <div class="poster-content">
+                        <h3>Strawberry Delicious</h3>
+                        <p>100% fresh strawberries blended into a creamy delight. Free toppings included!</p>
+                        <div class="poster-price">₹199</div>
+                        <button class="btn-poster">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Poster 3 -->
+                <div class="poster-card"
+                    onclick="addToCart('Pistachio Macarons', 399, 'recommended_macaron.png', 1); openCheckout();">
+                    <img src="recommended_macaron.png" class="bg-poster" alt="Pistachio Macarons">
+                    <div class="poster-overlay"></div>
+                    <div class="vertical-text">MACARON</div>
+                    <div class="poster-content">
+                        <h3>Pistachio Macarons</h3>
+                        <p>Delicately crisp on the outside, irresistibly chewy on the inside. A nutty dream come true.
+                        </p>
+                        <div class="poster-price">₹399</div>
+                        <button class="btn-poster">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Poster 4 -->
+                <div class="poster-card"
+                    onclick="addToCart('Strawberry & Vanilla Cupcake', 149, 'giant_cupcake_1784385102721.png', 1); openCheckout();">
+                    <img src="giant_cupcake_1784385102721.png" class="bg-poster" alt="Strawberry Vanilla Cupcake">
+                    <div class="poster-overlay"></div>
+                    <div class="vertical-text">CUPCAKE</div>
+                    <div class="poster-content">
+                        <h3>Strawberry & Vanilla</h3>
+                        <p>Indulge in the perfect harmony of fruity freshness and creamy vanilla delight.</p>
+                        <div class="poster-price">₹149</div>
+                        <button class="btn-poster">Order Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EDITORIAL / CURATED SHOWCASES -->
+            <section class="editorial-showcase">
+
+                <!-- Tiramisu -->
+                <div class="ed-block ed-tiramisu">
+                    <div class="ed-image" style="background-image: url('tiramisu_doodle_1784385553418.png');"></div>
+                    <div class="ed-content">
+                        <h2>Tiramisu! ☕</h2>
+                        <p>The perfect pick-me-up! A playful, classic Italian dessert with layers of coffee-soaked
+                            ladyfingers and sweet mascarpone cream, dusted generously with premium cocoa.</p>
+                        <button class="btn-checkout" style="width: auto; background: #ff4d79; text-transform: uppercase;" onclick="window.location.href='pastries.html'">Taste the Magic</button>
+                    </div>
+                </div>
+
+                <!-- Elegant Croissant -->
+                <div class="ed-block ed-elegant reverse">
+                    <div class="ed-image" style="background-image: url('elegant_croissant_1784385566982.png');"></div>
+                    <div class="ed-content">
+                        <h2>Freshly Made<br>French<br>Croissants.</h2>
+                        <p>Pastry is baked food made with a dough of flour, water, and shortening that may be savoury or
+                            sweetened. Experience the rich, authentic flavors of our artisan bakery right at your table.
+                        </p>
+                        <button class="btn-checkout" style="width: auto; background: #a87955; margin-top: 20px; text-transform: uppercase;" onclick="window.location.href='pastries.html'">Explore
+                            Collection</button>
+                    </div>
+                </div>
+
+                <!-- Affogato -->
+                <div class="ed-block ed-affogato">
+                    <div class="ed-image" style="background-image: url('affogato_steps_1784385579350.png');"></div>
+                    <div class="ed-content">
+                        <h2>How to Make<br>AFFOGATO</h2>
+                        <p><b>1. SCOOP THE ICE CREAM</b><br>Place 1-2 scoops of vanilla ice cream in a
+                            glass.<br><br><b>2. POUR THE ESPRESSO</b><br>Brew a hot espresso and pour it
+                            over.<br><br><b>3. ENJOY IMMEDIATELY</b><br>Experience the perfect balance of hot espresso
+                            and cold, creamy ice cream.</p>
+                        <button class="btn-checkout" style="width: auto; background: #3b2f2f; margin-top: 20px; text-transform: uppercase;" onclick="window.location.href='icecream.html'">Order
+                            Ingredients</button>
+                    </div>
+                </div>
+
+                <!-- Blueberry Cone -->
+                <div class="ed-block ed-blueberry reverse">
+                    <div class="ed-image" style="background-image: url('blueberry_cone_1784385590123.png');"></div>
+                    <div class="ed-content">
+                        <h2>BLUEBERRY<br>Ice cream</h2>
+                        <p>Vibrant, refreshing, and loaded with real fruit and crunchy hazelnut pieces.</p>
+                        <button class="btn-checkout" style="width: auto; background: #6b4c9a; margin-top: 20px; text-transform: uppercase;" onclick="window.location.href='icecream.html'">Grab
+                            a Scoop</button>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- STICKY SIDE BAR -->
+    <div class="sticky-off">
+        UPTO ₹500 OFF <i class="fa-solid fa-tag"></i>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4>Online Shopping</h4>
+                <ul>
+                    <li>Cakes</li>
+                    <li>Donuts</li>
+                    <li>Pastries</li>
+                    <li>Ice Cream</li>
+                    <li>Gifting</li>
+                    <li>Gift Cards</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Policies</h4>
+                <ul>
+                    <li>Contact Us</li>
+                    <li>FAQ</li>
+                    <li>T&C</li>
+                    <li>Terms Of Use</li>
+                    <li>Track Orders</li>
+                    <li>Shipping</li>
+                    <li>Cancellation</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Experience SweetTreats App</h4>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <img src="https://constant.myntassets.com/web/assets/img/80cc4d35-d60f-475d-95e9-c2c5eb86859a1539674178924-google_play.png"
+                        alt="Google Play" width="140">
+                    <img src="https://constant.myntassets.com/web/assets/img/bc5e1ad2-3b74-45b2-9a35-40ff2626e3551539674178941-apple_store.png"
+                        alt="Apple Store" width="140">
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Keep In Touch</h4>
+                <div style="display: flex; gap: 20px; font-size: 1.5rem; margin-top: 10px; color: #696b79;">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2026 www.sweettreats.com. All rights reserved.</p>
+            <p>A Passion for Excellence</p>
+        </div>
+    </footer>
+
+    <!-- OVERLAYS -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3 class="cart-title">Shopping Bag</h3>
+            <div class="cart-close" id="closeCart"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div class="cart-body" id="cartItems">
+            <!-- Cart items will be injected here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotal">₹0</span>
+            </div>
+            <button class="btn-checkout" onclick="openCheckout()">Checkout Now</button>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-header">
+            <h2 class="modal-title">Checkout</h2>
+        </div>
+        <form onsubmit="processPayment(event)">
+            <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" required placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+                <label>Delivery Address</label>
+                <textarea class="form-control" required placeholder="Enter delivery address"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Payment Method</label>
+                <select class="form-control">
+                    <option>Credit / Debit Card</option>
+                    <option>UPI / Google Pay</option>
+                    <option>Cash on Delivery</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-checkout">Place Order</button>
+        </form>
+    </div>
+
+    <!-- RESERVATION MODAL -->
+    <div class="modal" id="reserveModal">
+        <div class="modal-header">
+            <h2 class="modal-title">Book a Table</h2>
+        </div>
+        <form onsubmit="processReservation(event)">
+            <div class="form-group">
+                <label>Number of Guests</label>
+                <input type="number" class="form-control" min="1" required value="2">
+            </div>
+            <div class="form-group">
+                <label>Date & Time</label>
+                <input type="datetime-local" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Occasion</label>
+                <select class="form-control">
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                    <option>Business Meeting</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-checkout">Confirm Booking</button>
+        </form>
+    </div>
+
+    <!-- CATEGORY DETAILS MODAL -->
+    
+    <!-- CAKE CUSTOMIZER MODAL -->
+    <div class="modal" id="cakeCustomizerModal" style="max-width: 500px; padding: 0; border-radius: 20px; overflow: hidden; z-index: 10001;">
+        <div style="background: #2c2925; color: #fff; padding: 25px; text-align: center; position: relative;">
+            <h2 style="font-family: var(--font-heading); margin: 0; font-size: 2rem;">Build Your Dream Cake</h2>
+            <p style="color: #d4af37; margin-top: 5px;">Customize layers, fillings, and toppings</p>
+            <div onclick="closeCakeCustomizer()" style="position: absolute; top: 20px; right: 20px; cursor: pointer; color: #fff; font-size: 1.5rem;"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <div style="padding: 30px; background: #fff;">
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="font-weight: bold; margin-bottom: 8px; display: block; color: #333;">1. Select Base Layer</label>
+                <select class="form-control" id="customBase" onchange="updateCakePreview()" style="border: 2px solid #eee; border-radius: 10px; padding: 12px; width: 100%;">
+                    <option value="Chocolate Mousse">Chocolate Mousse</option>
+                    <option value="Red Velvet Sponge">Red Velvet Sponge</option>
+                    <option value="Vanilla Bean Sponge">Vanilla Bean Sponge</option>
+                    <option value="Black Forest">Black Forest</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="font-weight: bold; margin-bottom: 8px; display: block; color: #333;">2. Select Inner Filling</label>
+                <select class="form-control" id="customFilling" onchange="updateCakePreview()" style="border: 2px solid #eee; border-radius: 10px; padding: 12px; width: 100%;">
+                    <option value="Fresh Strawberry Compote">Fresh Strawberry Compote</option>
+                    <option value="Salted Caramel">Salted Caramel</option>
+                    <option value="Dark Chocolate Ganache">Dark Chocolate Ganache</option>
+                    <option value="Cream Cheese">Cream Cheese</option>
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="font-weight: bold; margin-bottom: 8px; display: block; color: #333;">3. Select Toppings</label>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <label style="background: #f9f9f9; padding: 8px 15px; border-radius: 20px; cursor: pointer; border: 1px solid #ddd; color: #333;"><input type="checkbox" name="topping" value="Macarons" style="margin-right: 5px;" onchange="updateCakePreview()"> Macarons</label>
+                    <label style="background: #f9f9f9; padding: 8px 15px; border-radius: 20px; cursor: pointer; border: 1px solid #ddd; color: #333;"><input type="checkbox" name="topping" value="Gold Flakes" style="margin-right: 5px;" onchange="updateCakePreview()"> Gold Flakes</label>
+                    <label style="background: #f9f9f9; padding: 8px 15px; border-radius: 20px; cursor: pointer; border: 1px solid #ddd; color: #333;"><input type="checkbox" name="topping" value="Fresh Berries" style="margin-right: 5px;" onchange="updateCakePreview()"> Fresh Berries</label>
+                </div>
+            </div>
+            
+            <div style="background: #fef8f5; border: 1px dashed #ff9054; padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 25px;">
+                <h4 style="color: #ff9054; margin: 0 0 10px 0;"><i class="fa-solid fa-layer-group"></i> Cake Preview</h4>
+                <p id="customPreview" style="font-size: 0.95rem; color: #555; margin: 0; font-weight: bold;">Chocolate Mousse + Fresh Strawberry Compote</p>
+                <p id="customPreviewToppings" style="font-size: 0.85rem; color: #888; margin-top: 5px;"></p>
+            </div>
+
+            <button onclick="addCustomCakeToBag()" style="width: 100%; background: linear-gradient(90deg, #d4af37, #f3e5ab); color: #2c2925; padding: 15px; border: none; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; box-shadow: 0 5px 15px rgba(212,175,55,0.3);">Add Custom Cake - ₹999</button>
+        </div>
+    </div>
+
+    <!-- REDESIGNED CATEGORY DETAILS MODAL -->
+
+    <!-- REDESIGNED CATEGORY DETAILS MODAL -->
+    <div class="modal" id="categoryDetailModal"
+        style="padding:0; max-width:400px; border-radius:35px; overflow:hidden; background:#fef4e8; box-shadow:0 30px 60px rgba(0,0,0,0.2); border: 8px solid #111;">
+        <!-- Top Image with Zigzag mask -->
+        <div style="position:relative; width:100%; height:320px; background:#fff;">
+            <img id="categoryMainImg" src="" alt=""
+                style="width:100%; height:100%; object-fit:cover; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), 90% 100%, 80% calc(100% - 25px), 70% 100%, 60% calc(100% - 25px), 50% 100%, 40% calc(100% - 25px), 30% 100%, 20% calc(100% - 25px), 10% 100%, 0 calc(100% - 25px));">
+
+            <!-- Floating Buttons -->
+            <button
+                onclick="document.getElementById('categoryDetailModal').classList.remove('show'); document.getElementById('overlay').classList.remove('show');"
+                style="position:absolute; top:25px; left:20px; width:40px; height:40px; border-radius:12px; border:none; background:#ff9054; color:#fff; cursor:pointer; font-size:1.2rem; box-shadow:0 5px 15px rgba(255,144,84,0.4); z-index:10;"><i
+                    class="fa-solid fa-chevron-left"></i></button>
+            <button id="modalWishlistBtn" onclick="toggleWishlist(this)"
+                style="position:absolute; top:25px; right:20px; width:40px; height:40px; border-radius:12px; border:2px solid #ff9054; background:transparent; color:#ff9054; cursor:pointer; font-size:1.2rem; z-index:10; transition:0.3s;"><i
+                    class="fa-regular fa-heart"></i></button>
+        </div>
+
+        <!-- Content Body -->
+        <div style="padding:30px 25px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h3 id="categoryMainName"
+                    style="font-family:var(--font-heading); font-size:1.6rem; color:#222; margin:0; line-height:1.2; max-width:70%;">
+                </h3>
+                <span id="categoryMainPrice" style="font-size:1.4rem; font-weight:400; color:#222;"></span>
+            </div>
+
+            <p id="categoryMainDesc" style="color:#888; font-size:0.85rem; line-height:1.6; margin-bottom:25px;"></p>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+                <span style="color:#222; font-size:1.05rem;">Flavour</span>
+                <span style="color:#222; font-weight:600;">Signature</span>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+                <span style="color:#222; font-size:1.05rem;">Quantity</span>
+                <div
+                    style="display:flex; align-items:center; background:#fff; border-radius:20px; padding:5px 15px; box-shadow:0 2px 10px rgba(0,0,0,0.03);">
+                    <button onclick="changeModalQty(-1)"
+                        style="border:none; background:none; cursor:pointer; font-weight:bold; font-size:1.2rem; color:#555; width:20px;">-</button>
+                    <span id="modalQtyVal"
+                        style="margin:0 15px; font-weight:bold; font-size:1.1rem; color:#222; width:20px; text-align:center;">1</span>
+                    <button onclick="changeModalQty(1)"
+                        style="border:none; background:none; cursor:pointer; font-weight:bold; font-size:1.2rem; color:#555; width:20px;">+</button>
+                </div>
+            </div>
+
+            <h4 id="suggestionsTitle" style="font-size:1.1rem; color:#222; margin-bottom:15px; font-weight:400;">Add
+                Extras</h4>
+            <div id="modalSuggestions"
+                style="display:flex; gap:15px; margin-bottom:30px; overflow-x:auto; padding-bottom:5px;">
+                <!-- Dynamically injected -->
+            </div>
+
+            <button id="categoryAddBagBtn"
+                style="width:100%; background:linear-gradient(90deg, #ff9054, #ff6c2c); border:none; padding:20px 25px; border-radius:35px; color:#fff; font-size:1.1rem; cursor:pointer; display:flex; justify-content:space-between; align-items:center; box-shadow:0 15px 30px rgba(255,108,44,0.3); transition: transform 0.2s;">
+                <span id="categoryAddBagText" style="font-weight:400;">Add to Cart</span>
+                <span id="modalTotalPrice" style="font-weight:bold;"></span>
+            </button>
+        </div>
+    </div>
+
+    <div class="ai-widget" onclick="toggleAIChat()">
+        <i class="fa-solid fa-robot"></i>
+    </div>
+    <div class="ai-chat-window" id="aiChat">
+        <div class="ai-chat-header">
+            <span>AI SweetAssistant</span>
+            <i class="fa-solid fa-minus" style="cursor: pointer;" onclick="toggleAIChat()"></i>
+        </div>
+        <div class="ai-chat-body" id="aiBody">
+            <div class="ai-msg bot">Hi! I'm your AI SweetAssistant. I can recommend the perfect dessert for your mood.
+                What are you craving today?</div>
+        </div>
+        <div class="ai-chat-footer">
+            <input type="text" class="ai-chat-input" id="aiInput" placeholder="Describe your mood..."
+                onkeydown="if(event.key==='Enter') sendAIMessage()">
+            <i class="fa-solid fa-paper-plane" style="color: var(--clr-primary); cursor: pointer;"
+                onclick="sendAIMessage()"></i>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // STATE
+        let cart = [];
+        let wishlist = [];
+
+        // UI ELEMENTS
+        const overlay = document.getElementById('overlay');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const reserveModal = document.getElementById('reserveModal');
+        const aiChat = document.getElementById('aiChat');
+        const toast = document.getElementById('toast');
+
+        // TOAST LOGIC
+        function showToast(msg, type = 'success') {
+            toast.textContent = msg;
+            toast.className = `toast show ${type}`;
+            setTimeout(() => { toast.classList.remove('show'); }, 3000);
+        }
+
+        // CART LOGIC
+        function toggleCart() {
+            cartSidebar.classList.toggle('open');
+            overlay.classList.toggle('show');
+        }
+
+
+        function addToCart(name, price, img, qty = 1) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({ name, price, img, qty });
+            }
+            updateCartUI();
+            showToast(`${qty}x ${name} added to bag!`);
+        }
+
+        function updateCartUI() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            // Add count badge if it doesn't exist
+            let countBadge = document.querySelector('.action-item span.count');
+            if (!countBadge) {
+                const bagIcon = document.querySelector('.fa-bag-shopping');
+                countBadge = document.createElement('span');
+                countBadge.className = 'count';
+                countBadge.style.background = 'var(--clr-primary)';
+                countBadge.style.color = '#fff';
+                countBadge.style.borderRadius = '50%';
+                countBadge.style.padding = '2px 6px';
+                countBadge.style.fontSize = '10px';
+                countBadge.style.position = 'absolute';
+                countBadge.style.top = '-5px';
+                countBadge.style.right = '-5px';
+                bagIcon.parentElement.style.position = 'relative';
+                bagIcon.parentElement.appendChild(countBadge);
+            }
+
+            countBadge.textContent = cart.length;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align:center; color: #696b79; margin-top: 50px;">Your bag is empty</p>';
+                cartTotal.textContent = '₹0';
+                return;
+            }
+
+            let total = 0;
+            cartItems.innerHTML = cart.map((item, index) => {
+                total += (item.price * (item.qty || 1));
+                return `
+                    <div class="cart-item" style="display:flex; align-items:center; margin-bottom:15px; border-bottom:1px solid #eee; padding-bottom:10px;">
+                        <img src="${item.img}" class="cart-item-img" style="width:60px; height:60px; border-radius:8px; object-fit:cover; margin-right:15px;">
+                        <div class="cart-item-info" style="flex:1;">
+                            <h4 class="cart-item-title" style="margin:0 0 5px; font-size:0.95rem;">${item.name}</h4>
+                            <div class="cart-item-price" style="font-weight:bold; color:var(--clr-primary); margin-bottom:5px;">₹${item.price}</div>
+                            
+                            <div style="display:flex; align-items:center; justify-content:space-between;">
+                                <div style="display:flex; align-items:center; background:#f1f1f1; border-radius:15px; overflow:hidden;">
+                                    <button onclick="updateCartItemQty(${index}, -1)" style="border:none; background:none; padding:2px 8px; cursor:pointer; font-weight:bold;">-</button>
+                                    <span style="font-size:0.8rem; font-weight:bold; width:20px; text-align:center;">${item.qty || 1}</span>
+                                    <button onclick="updateCartItemQty(${index}, 1)" style="border:none; background:none; padding:2px 8px; cursor:pointer; font-weight:bold;">+</button>
+                                </div>
+                                <button onclick="removeFromCart(${index})" style="background:none; border:none; color: var(--clr-primary); cursor:pointer; font-size:0.8rem; font-weight:bold;"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            cartTotal.textContent = `₹${total}`;
+        }
+
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartItemQty(index, change) {
+            if (cart[index]) {
+                cart[index].qty = (cart[index].qty || 1) + change;
+                if (cart[index].qty < 1) {
+                    cart.splice(index, 1);
+                }
+                updateCartUI();
+            }
+        }
+
+        // MODAL LOGIC
+        function openCheckout() {
+            window.location.href = 'cart.html';
+        }
+
+        function openReservation() {
+            reserveModal.classList.add('show');
+            overlay.classList.add('show');
+        }
+
+        function closeModals() {
+            checkoutModal.classList.remove('show');
+            reserveModal.classList.remove('show');
+            document.getElementById('categoryDetailModal').classList.remove('show');
+            cartSidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        }
+
+        overlay.onclick = closeModals;
+        document.getElementById('closeCart').onclick = toggleCart;
+
+        // FORM SUBMISSIONS
+        function processPayment(e) {
+            e.preventDefault();
+            showToast('Processing Payment...', 'success');
+            setTimeout(() => {
+                showToast('Order Placed Successfully! 🎉');
+                cart = [];
+                updateCartUI();
+                closeModals();
+            }, 2000);
+        }
+
+        function processReservation(e) {
+            e.preventDefault();
+            showToast('Checking Availability...', 'success');
+            setTimeout(() => {
+                showToast('Table Reserved! See you soon. 🥂');
+                closeModals();
+            }, 1500);
+        }
+
+        // AI ASSISTANT LOGIC
+        function toggleAIChat() {
+            aiChat.classList.toggle('open');
+        }
+
+        const aiResponses = [
+            { keywords: ["chocolate", "rich", "mood"], response: "If you're in the mood for something rich, I highly recommend our **Decadent Fudge Cake** or the **Chocolate Brownie Sundae**!" },
+            { keywords: ["light", "fruit", "summer"], response: "For something light and refreshing, our **Raspberry Tart** or **Lemon Macarons** are perfect choices." },
+            { keywords: ["party", "birthday", "many"], response: "Celebrating? Our **Customized Layered Cakes** are a huge hit for parties!" },
+            { keywords: ["vegan", "healthy"], response: "We have delicious **Vegan Banana Bread** and dairy-free fruit sorbets!" }
+        ];
+
+        function sendAIMessage() {
+            const input = document.getElementById('aiInput');
+            const body = document.getElementById('aiBody');
+            const text = input.value.trim().toLowerCase();
+
+            if (!text) return;
+
+            // User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-msg user';
+            userMsg.textContent = input.value;
+            body.appendChild(userMsg);
+            input.value = '';
+            body.scrollTop = body.scrollHeight;
+
+            // Bot Typing
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = 'ai-msg bot';
+
+                let foundResponse = "That sounds interesting! We have many delicious options. Why not try our **Chef's Special Macarons** today?";
+
+                for (let r of aiResponses) {
+                    if (r.keywords.some(k => text.includes(k))) {
+                        foundResponse = r.response;
+                        break;
+                    }
+                }
+
+                botMsg.innerHTML = foundResponse;
+                body.appendChild(botMsg);
+                body.scrollTop = body.scrollHeight;
+            }, 1000);
+        }
+
+        // CATEGORY DATA
+        const categoryData = {
+            'Cakes': {
+                mainName: 'Signature Strawberry Cheesecake',
+                mainImg: 'cake_category_1777660447849.png',
+                mainDesc: 'A slice of pure bliss. Velvety smooth cream cheese layered over a crunchy graham cracker crust, topped with fresh, sweet strawberry glaze.',
+                mainPrice: 299,
+                recName: 'Premium Red Velvet Cake Slice',
+                recImg: 'recommended_cake.png',
+                recPrice: 349
+            },
+            'Donuts': {
+                mainName: 'Belgian Chocolate Glazed Donut',
+                mainImg: 'donut_category_1777660467553.png',
+                mainDesc: 'Soft, fluffy, freshly baked donut dipped in luxurious melted Belgian dark chocolate and sprinkled with colorful sugar strands.',
+                mainPrice: 149,
+                recName: 'Strawberry Glazed Donut',
+                recImg: 'recommended_donut.png',
+                recPrice: 129
+            },
+            'Ice Cream': {
+                mainName: 'Classic Vanilla Bean Cone',
+                mainImg: 'icecream_category_1777660485890.png',
+                mainDesc: 'Rich and creamy artisanal ice cream made with real Madagascar vanilla beans, served in a freshly baked crispy waffle cone.',
+                mainPrice: 199,
+                recName: 'Artisanal Mango Gelato Scoop',
+                recImg: 'recommended_icecream.png',
+                recPrice: 229
+            },
+            'Pastries': {
+                mainName: 'Gourmet Almond Croissant',
+                mainImg: 'pastry_category_1777660510169.png',
+                mainDesc: 'Flaky, golden-brown puff pastry filled with sweet almond frangipane and topped with toasted sliced almonds and powdered sugar.',
+                mainPrice: 189,
+                recName: 'Pain au Chocolat Pastry',
+                recImg: 'recommended_pastry.png',
+                recPrice: 199
+            },
+            'Cupcakes': {
+                mainName: 'Red Velvet Joy Cupcake',
+                mainImg: 'cupcake_deal_1777660591014.png',
+                mainDesc: 'A delightful and moist red velvet cupcake crowned with a generous swirl of classic cream cheese frosting and a tiny candy heart.',
+                mainPrice: 119,
+                recName: 'Double Chocolate Fudge Cupcake',
+                recImg: 'recommended_cupcake.png',
+                recPrice: 139
+            },
+            'Macarons': {
+                mainName: 'Chef\'s Special Macaron Tower',
+                mainImg: 'macaron_deal_1777660573385.png',
+                mainDesc: 'An assortment of delicate, crispy-on-the-outside, chewy-on-the-inside French macarons in pistachio, strawberry, and chocolate flavors.',
+                mainPrice: 499,
+                recName: 'Pistachio French Macarons',
+                recImg: 'recommended_macaron.png',
+                recPrice: 399
+            }
+        };
+
+        function openCategoryDetails(categoryName) {
+            const data = categoryData[categoryName];
+            if (!data) return;
+
+            document.getElementById('categoryModalTitle').textContent = `${categoryName} Collection`;
+            document.getElementById('categoryMainName').textContent = data.mainName;
+            document.getElementById('categoryMainImg').src = data.mainImg;
+            document.getElementById('categoryMainImg').alt = data.mainName;
+            document.getElementById('categoryMainDesc').textContent = data.mainDesc;
+            document.getElementById('categoryMainPrice').textContent = `₹${data.mainPrice}`;
+
+            document.getElementById('categoryRecName').textContent = data.recName;
+            document.getElementById('categoryRecImg').src = data.recImg;
+            document.getElementById('categoryRecImg').alt = data.recName;
+            document.getElementById('categoryRecPrice').textContent = `₹${data.recPrice}`;
+
+            // Set up click handlers for buttons inside this category modal
+            document.getElementById('categoryAddBagBtn').onclick = () => {
+                addToCart(data.mainName, data.mainPrice, data.mainImg);
+            };
+
+            document.getElementById('categoryBuyNowBtn').onclick = () => {
+                addToCart(data.mainName, data.mainPrice, data.mainImg);
+                closeModals();
+                openCheckout();
+            };
+
+            document.getElementById('categoryRecAddBtn').onclick = () => {
+                addToCart(data.recName, data.recPrice, data.recImg);
+            };
+
+            // Show modal
+            document.getElementById('categoryDetailModal').classList.add('show');
+            overlay.classList.add('show');
+        }
+
+        // INITIALIZE CLICK HANDLERS
+        document.querySelectorAll('.category-item').forEach(item => {
+            const nameEl = item.querySelector('.category-name');
+            if (nameEl) {
+                const categoryName = nameEl.textContent.trim().toLowerCase();
+                item.onclick = () => {
+                    if (categoryName.includes('cake')) window.location.href = 'cakes.html';
+                    else if (categoryName.includes('donut')) window.location.href = 'donuts.html';
+                    else if (categoryName.includes('ice cream')) window.location.href = 'icecream.html';
+                    else if (categoryName.includes('pastry') || categoryName.includes('croissant')) window.location.href = 'pastries.html';
+                    else window.location.href = 'gifting.html';
+                };
+                item.style.cursor = 'pointer';
+            }
+        });
+
+        document.querySelector('.fa-bag-shopping').parentElement.onclick = toggleCart;
+
+        // Gifting link works normally now
+
+        // Add "Add to Bag" buttons to deal cards
+        document.querySelectorAll('.deal-card').forEach(card => {
+            const name = card.querySelector('.deal-brand').textContent;
+            const price = Math.floor(Math.random() * (500 - 100) + 100); // Simulated price
+            const img = card.querySelector('img').src;
+
+            const btn = document.createElement('button');
+            btn.textContent = 'Add to Bag';
+            btn.style.marginTop = '10px';
+            btn.style.padding = '8px 15px';
+            btn.style.background = '#fff';
+            btn.style.border = '1px solid var(--clr-primary)';
+            btn.style.color = 'var(--clr-primary)';
+            btn.style.borderRadius = '4px';
+            btn.style.fontWeight = '700';
+            btn.style.cursor = 'pointer';
+            btn.style.width = '100%';
+            btn.onclick = (e) => {
+                e.stopPropagation();
+                addToCart(name, price, img);
+            };
+            card.appendChild(btn);
+        });
+
+        // Profile & Wishlist placeholders
+        // Removed legacy Login override
+        // Removed legacy Wishlist override
+
+        // SEARCH AUTO-SUGGESTIONS LOGIC
+        const productsDB = [
+            { name: 'Chocolate Truffle', category: 'cake', price: 499, img: 'cake_category_1777660447849.png' },
+            { name: 'Red Velvet Cake', category: 'cake', price: 599, img: 'recommended_cake.png' },
+            { name: 'Mango Cake', category: 'cake', price: 399, img: 'cake_category_1777660447849.png' },
+            { name: 'Black Forest', category: 'cake', price: 449, img: 'recommended_cake.png' },
+            { name: 'Chocolate Donut', category: 'donut', price: 149, img: 'donut_category_1777660467553.png' },
+            { name: 'Strawberry Donut', category: 'donut', price: 129, img: 'recommended_donut.png' },
+            { name: 'Glazed Donut', category: 'donut', price: 119, img: 'donut_category_1777660467553.png' },
+            { name: 'Caramel Donut', category: 'donut', price: 169, img: 'donut_category_1777660467553.png' },
+            { name: 'Almond Croissant', category: 'pastry', price: 189, img: 'pastry_category_1777660510169.png' },
+            { name: 'Pain au Chocolat', category: 'pastry', price: 199, img: 'recommended_pastry.png' },
+            { name: 'Berry Cheesecake', category: 'pastry', price: 249, img: 'recommended_cake.png' },
+            { name: 'Chocolate Mousse', category: 'pastry', price: 199, img: 'pastry_category_1777660510169.png' },
+            { name: 'Vanilla Bean Cone', category: 'ice cream', price: 199, img: 'icecream_category_1777660485890.png' },
+            { name: 'Mango Gelato', category: 'ice cream', price: 229, img: 'recommended_icecream.png' },
+            { name: 'Strawberry Delicious', category: 'ice cream', price: 199, img: 'recommended_icecream.png' },
+            { name: 'Iced Coffee Splash', category: 'ice cream', price: 249, img: 'icecream_category_1777660485890.png' },
+            { name: 'Cupcake Hamper', category: 'gifting', price: 899, img: 'cupcake_deal_1777660591014.png' },
+            { name: 'Premium Macarons', category: 'gifting', price: 999, img: 'macaron_deal_1777660573385.png' },
+            { name: 'Pistachio Macarons', category: 'gifting', price: 399, img: 'recommended_macaron.png' },
+            { name: 'Berry Macarons', category: 'gifting', price: 399, img: 'macaron_deal_1777660573385.png' },
+            { name: 'Vanilla Almond', category: 'ice cream', price: 199, img: 'icecream_category_1777660485890.png' },
+            { name: 'Tropical Mango', category: 'ice cream', price: 229, img: 'recommended_icecream.png' },
+            { name: 'Berry Burst', category: 'ice cream', price: 199, img: 'recommended_icecream.png' },
+            { name: 'Aura Espresso Pint', category: 'ice cream', price: 249, img: 'icecream_category_1777660485890.png' },
+            { name: 'Sweetest Delights Ice Cream', category: 'ice cream', price: 349, img: 'recommended_icecream.png' }
+        ];
+
+        function handleSearchInput(val) {
+            const container = document.getElementById('navSearchContainer');
+            const dropdown = document.getElementById('searchDropdown');
+            const searchStr = val.toLowerCase().trim();
+
+            if (searchStr.length === 0) {
+                container.classList.remove('active');
+                return;
+            }
+
+            const matches = typeof productsDB !== 'undefined' ? productsDB.filter(p => p.name.toLowerCase().includes(searchStr) || (p.category && p.category.toLowerCase().includes(searchStr))) : [];
+
+            let html = '';
+
+            let catMatch = null;
+            if (searchStr.includes('cake')) catMatch = { name: 'Cakes', url: 'cakes.html', icon: 'fa-cake-candles' };
+            else if (searchStr.includes('donut')) catMatch = { name: 'Donuts', url: 'donuts.html', icon: 'fa-circle-dot' };
+            else if (searchStr.includes('ice')) catMatch = { name: 'Ice Cream', url: 'icecream.html', icon: 'fa-ice-cream' };
+            else if (searchStr.includes('pastry') || searchStr.includes('croissant')) catMatch = { name: 'Pastries', url: 'pastries.html', icon: 'fa-cookie' };
+            else if (searchStr.includes('gift') || searchStr.includes('macaron') || searchStr.includes('cupcake')) catMatch = { name: 'Gifting & Cupcakes', url: 'gifting.html', icon: 'fa-gift' };
+
+            if (catMatch || matches.length > 0) {
+                html += '<div class="search-group"><h5>Suggestions</h5>';
+                if (catMatch) {
+                    html += `<div class="search-item" onclick="window.location.href='${catMatch.url}'" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer; background:#fff5e6; border-left:4px solid var(--clr-primary);"><span style="display:flex;align-items:center;gap:10px;"><i class="fa-solid ${catMatch.icon}" style="color:var(--clr-primary); width:30px; text-align:center; font-size:1.2rem;"></i> Explore all ${catMatch.name}</span> <i class="fa-solid fa-chevron-right" style="color:#aaa;"></i></div>`;
+                }
+                matches.forEach(m => {
+                    html += `<div class="search-item" onclick="if(typeof openProductModal === 'function'){openProductModal('${m.name}', 'Our signature dessert crafted perfectly.', ${m.price}, '${m.img}'); document.getElementById('navSearchContainer').classList.remove('active');} else {addToCart('${m.name}', ${m.price}, '${m.img}'); showToast('Added to bag!'); document.getElementById('navSearchContainer').classList.remove('active');}" style="display:flex; justify-content:space-between; align-items:center; cursor:pointer;"><span style="display:flex;align-items:center;gap:10px;"><img src="${m.img}" style="width:30px;height:30px;border-radius:5px;object-fit:cover;"> ${m.name}</span> <span style="color:var(--clr-primary);font-weight:bold;">₹${m.price}</span></div>`;
+                });
+                html += '</div>';
+            } else {
+                html += '<p style="color: #888; font-size: 0.9rem; padding: 10px;">No results found</p>';
+            }
+
+            dropdown.innerHTML = html;
+            container.classList.add('active');
+        }
+
+        // Close search dropdown on outside click
+        document.addEventListener('click', (e) => {
+            const container = document.getElementById('navSearchContainer');
+            if (container && !container.contains(e.target)) {
+                container.classList.remove('active');
+            }
+        });
+
+        // Simple search interaction (Enter key)
+        const searchInputEl = document.querySelector('#searchInput');
+        if (searchInputEl) {
+            searchInputEl.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const searchStr = this.value.toLowerCase().trim();
+                    if (!searchStr) return;
+
+                    let catUrl = '';
+                    if (searchStr.includes('cake')) catUrl = 'cakes.html';
+                    else if (searchStr.includes('donut')) catUrl = 'donuts.html';
+                    else if (searchStr.includes('ice')) catUrl = 'icecream.html';
+                    else if (searchStr.includes('pastry') || searchStr.includes('croissant')) catUrl = 'pastries.html';
+                    else if (searchStr.includes('gift') || searchStr.includes('macaron') || searchStr.includes('cupcake')) catUrl = 'gifting.html';
+
+                    if (catUrl) {
+                        window.location.href = catUrl;
+                        return;
+                    }
+
+                    const match = typeof productsDB !== 'undefined' ? productsDB.find(p => p.name.toLowerCase().includes(searchStr) || (p.category && p.category.toLowerCase().includes(searchStr))) : null;
+
+                    if (match) {
+                        if (typeof openProductModal === 'function') {
+                            openProductModal(match.name, 'Our signature dessert crafted perfectly.', match.price, match.img);
+                        } else if (typeof addToCart === 'function') {
+                            addToCart(match.name, match.price, match.img);
+                            if (typeof showToast === 'function') showToast('Added ' + match.name + ' to bag!');
+                        }
+                    } else {
+                        if (typeof showToast === 'function') showToast('No exact match found for: ' + this.value);
+                    }
+
+                    const container = document.getElementById('navSearchContainer');
+                    if (container) container.classList.remove('active');
+                    this.value = '';
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // INTERCEPT CART LOGIC FOR LOCALSTORAGE
+        (function () {
+            if (typeof cart !== 'undefined' && typeof addToCart === 'function') {
+                // Load saved cart
+                const savedCart = JSON.parse(localStorage.getItem('st_cart'));
+                if (savedCart) {
+                    cart.length = 0; // clear existing
+                    savedCart.forEach(i => cart.push(i));
+                }
+
+                function _save() { localStorage.setItem('st_cart', JSON.stringify(cart)); }
+
+                const _origAdd = addToCart;
+                window.addToCart = function (name, price, img, qty = 1) {
+                    _origAdd(name, price, img, qty);
+                    _save();
+                };
+
+                const _origRemove = removeFromCart;
+                window.removeFromCart = function (index) {
+                    _origRemove(index);
+                    _save();
+                };
+
+                const _origUpdate = updateCartItemQty;
+                window.updateCartItemQty = function (index, change) {
+                    _origUpdate(index, change);
+                    _save();
+                };
+
+                // Re-render UI after a short delay to ensure DOM is ready
+                setTimeout(() => { if (typeof updateCartUI === 'function') updateCartUI(); }, 100);
+            }
+        })();
+    </script>
+
+
+
+
+    <script>
+        let currentModalQty = 1;
+        let currentModalBasePrice = 0;
+
+        function changeModalQty(change) {
+            currentModalQty += change;
+            if (currentModalQty < 1) currentModalQty = 1;
+            const qtyValEl = document.getElementById('modalQtyVal');
+            if (qtyValEl) qtyValEl.textContent = currentModalQty;
+
+            const totalEl = document.getElementById('modalTotalPrice');
+            if (totalEl && currentModalBasePrice) {
+                totalEl.textContent = '₹' + (currentModalBasePrice * currentModalQty);
+            }
+        }
+
+        function toggleWishlist(btn) {
+            if (btn.getAttribute('data-wished') !== 'true') {
+                btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
+                btn.style.background = '#ff9054';
+                btn.style.color = '#fff';
+                btn.setAttribute('data-wished', 'true');
+                if (typeof showToast === 'function') showToast('Added to Wishlist!');
+            } else {
+                btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                btn.style.background = 'transparent';
+                btn.style.color = '#ff9054';
+                btn.setAttribute('data-wished', 'false');
+                if (typeof showToast === 'function') showToast('Removed from Wishlist');
+            }
+        }
+
+        function generateSuggestions(name) {
+            const n = name.toLowerCase();
+            let html = '';
+            let title = 'Add Drinks';
+
+            if (n.includes('cake') || n.includes('cupcake')) {
+                title = 'Add Party Essentials';
+                html = `
+                <div onclick="showToast('Magic Candles Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1532054944983-6c820061e860?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Party Popper Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1530103862676-de8892b12a1f?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Happy Birthday Tag Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1614088636402-40f41334c9c1?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+            } else if (n.includes('ice cream') || n.includes('gelato')) {
+                title = 'Add Toppings';
+                html = `
+                <div onclick="showToast('Choco Chips Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1622329241951-40995085d7b5?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Caramel Syrup Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1596700816912-ee98274719c8?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Waffle Cone Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1559182582-77eb93108ee8?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+            } else if (n.includes('macaron') || n.includes('pastry') || n.includes('donut')) {
+                title = 'Add Beverages';
+                html = `
+                <div onclick="showToast('Hot Coffee Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Iced Latte Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1517701550927-30cfcb64db88?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Berry Shake Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1623065422900-0587b1c3fa4a?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+            } else {
+                title = 'Add Drinks';
+                html = `
+                <div onclick="showToast('Strawberry Splash Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1623065422900-0587b1c3fa4a?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+                <div onclick="showToast('Iced Coffee Added!')" style="width:75px; flex-shrink:0; height:75px; border-radius:16px; background:#fff; padding:6px; box-shadow:0 5px 15px rgba(0,0,0,0.04); cursor:pointer;"><img src="https://images.unsplash.com/photo-1517701550927-30cfcb64db88?w=150" style="width:100%; height:100%; object-fit:cover; border-radius:10px;"></div>
+            `;
+            }
+
+            const titleEl = document.getElementById('suggestionsTitle');
+            if (titleEl) titleEl.textContent = title;
+
+            const suggEl = document.getElementById('modalSuggestions');
+            if (suggEl) suggEl.innerHTML = html;
+        }
+
+        function openProductModal(name, desc, price, img) {
+            currentModalQty = 1;
+            currentModalBasePrice = price;
+
+            const qtyValEl = document.getElementById('modalQtyVal');
+            if (qtyValEl) qtyValEl.textContent = currentModalQty;
+
+            const mainNameEl = document.getElementById('categoryMainName');
+            if (mainNameEl) mainNameEl.textContent = name;
+
+            const mainImgEl = document.getElementById('categoryMainImg');
+            if (mainImgEl) {
+                mainImgEl.src = img;
+                mainImgEl.alt = name;
+            }
+
+            const mainDescEl = document.getElementById('categoryMainDesc');
+            if (mainDescEl) mainDescEl.textContent = desc || 'A classic delight marvel of pastry craftsmanship. Handcrafted with perfection for any celebration, big or small.';
+
+            const mainPriceEl = document.getElementById('categoryMainPrice');
+            if (mainPriceEl) mainPriceEl.textContent = '₹' + price;
+
+            const totalEl = document.getElementById('modalTotalPrice');
+            if (totalEl) totalEl.textContent = '₹' + price;
+
+            // Reset wishlist button
+            const wBtn = document.getElementById('modalWishlistBtn');
+            if (wBtn) {
+                wBtn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+                wBtn.style.background = 'transparent';
+                wBtn.style.color = '#ff9054';
+            }
+
+            // Reset add to cart button
+            
+        
+        const addBtn = document.getElementById('categoryAddBagBtn');
+        const textBtn = document.getElementById('categoryAddBagText');
+        
+        let cartItems = [];
+        try { cartItems = JSON.parse(localStorage.getItem('st_cart')) || []; } catch(e){}
+        const existing = cartItems.find(i => i.name === name);
+        
+        if (addBtn) {
+            if (existing) {
+                addBtn.style.background = '#4CAF50';
+                if(textBtn) textBtn.textContent = 'Added to Cart ✓ (' + existing.qty + ')';
+            } else {
+                addBtn.style.background = 'linear-gradient(90deg, #ff9054, #ff6c2c)';
+                if(textBtn) textBtn.textContent = 'Add to Cart';
+            }
+            
+            addBtn.onclick = () => { 
+                let currentCart = [];
+                try { currentCart = JSON.parse(localStorage.getItem('st_cart')) || []; } catch(e){}
+                const itemInCart = currentCart.find(i => i.name === name);
+                
+                if (itemInCart) {
+                    if (itemInCart.qty === currentModalQty) {
+                        // Unchanged, just open cart
+                    } else {
+                        // User changed quantity via + / -, so UPDATE it!
+                        itemInCart.qty = currentModalQty;
+                        localStorage.setItem('st_cart', JSON.stringify(currentCart));
+                        if(typeof showToast === 'function') showToast('Updated quantity to ' + currentModalQty + '!');
+                        if (typeof window.renderGlobalCartSidebar === 'function') window.renderGlobalCartSidebar();
+                        if (typeof updateCartUI === 'function') updateCartUI();
+                    }
+                } else {
+                    // Not in cart, add it normally
+                    if(typeof addToCart === 'function') addToCart(name, price, img, currentModalQty); 
+                    if(typeof showToast === 'function') showToast('Added ' + currentModalQty + 'x ' + name + ' to bag!');
+                }
+                
+                addBtn.style.background = '#4CAF50';
+                if(textBtn) textBtn.textContent = 'Added to Cart ✓ (' + currentModalQty + ')';
+                
+                setTimeout(() => {
+                    document.getElementById('categoryDetailModal').classList.remove('show');
+                    document.getElementById('overlay').classList.remove('show');
+                    
+                    const sidebar = document.getElementById('cartSidebar');
+                    const over = document.getElementById('overlay');
+                    if(sidebar) sidebar.classList.add('open');
+                    if(over) over.classList.add('show');
+                }, 800);
+            };
+        }
+        
+        generateSuggestions(name);
+
+            const modalEl = document.getElementById('categoryDetailModal');
+            if (modalEl) modalEl.classList.add('show');
+
+            const overlayEl = document.getElementById('overlay');
+            if (overlayEl) overlayEl.classList.add('show');
+        }
+
+        function updateCakePreview() {
+            const base = document.getElementById('customBase').value;
+            const filling = document.getElementById('customFilling').value;
+            const toppingCheckboxes = document.querySelectorAll('input[name="topping"]:checked');
+            const toppings = Array.from(toppingCheckboxes).map(cb => cb.value);
+            
+            document.getElementById('customPreview').textContent = `${base} + ${filling}`;
+            
+            if (toppings.length > 0) {
+                document.getElementById('customPreviewToppings').textContent = `Topped with: ${toppings.join(', ')}`;
+            } else {
+                document.getElementById('customPreviewToppings').textContent = 'No additional toppings';
+            }
+        }
+        
+        function openCakeCustomizer() {
+            const modal = document.getElementById('cakeCustomizerModal');
+            const overlay = document.getElementById('overlay');
+            if (modal) modal.classList.add('show');
+            if (overlay) overlay.classList.add('show');
+            updateCakePreview(); // init
+        }
+        
+        function closeCakeCustomizer() {
+            const modal = document.getElementById('cakeCustomizerModal');
+            const overlay = document.getElementById('overlay');
+            if (modal) modal.classList.remove('show');
+            if (overlay) overlay.classList.remove('show');
+        }
+        
+        function addCustomCakeToBag() {
+            const base = document.getElementById('customBase').value;
+            addToCart(`Custom Cake (${base})`, 999, 'recommended_cake.png', 1);
+            showToast('Custom Cake added to bag!');
+            closeCakeCustomizer();
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('overlay');
+            if (sidebar) sidebar.classList.add('open');
+            if (overlay) overlay.classList.add('show');
+        }
+    </script>
+
+
+
+    <script src="dynamic_render.js"></script>
+</body>
+
+</html>

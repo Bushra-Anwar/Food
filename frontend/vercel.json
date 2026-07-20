@@ -1,0 +1,4 @@
+{
+  "buildCommand": "node build_static.cjs",
+  "outputDirectory": "dist_static"
+}

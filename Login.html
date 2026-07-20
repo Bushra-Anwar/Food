@@ -3,468 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Food- Login/Signup</title>
+    <title>E-Food | Login</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Define Elegant Color Palette (Slow Bakes Theme) */
-        :root {
-            --color-primary: #8B4513; /* Rich Brown/Cocoa (Used for text/accents) */
-            --color-accent: #DAA520; /* Gold/Mustard (Used for buttons/highlights) */
-            --color-light-bg: #FFF8E1; /* Pale Cream/Yellow (Used for sidebars) */
-            --color-main-bg: #EAE0C8; /* Slightly darker cream for main gradient */
-            --color-dark-text: #333333;
-            --color-link: #8B4513; /* Primary brown for links */
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(250,250,248,0.95) 0%, rgba(250,250,248,0.7) 100%), url('images/hero_bakery.png') center/cover;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            /* Changed bright orange gradient to elegant cream/tan gradient */
-            background: linear-gradient(135deg, var(--color-light-bg) 0%, var(--color-main-bg) 100%);
-            color: var(--color-dark-text);
-            overflow-x: hidden;
-        }
-        header {
-            /* Changed header color to Rich Brown */
-            background-color: var(--color-primary);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            animation: slideDown 1s ease-out;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .main-container {
-            display: flex;
-            min-height: calc(100vh - 100px);
-        }
-        .left-sidebar {
-            flex: 1;
-            /* Changed sidebar background to Pale Cream */
-            background-color: var(--color-light-bg);
-            padding: 20px;
-            /* Changed border color to Rich Brown */
-            border-right: 2px solid var(--color-primary);
-            overflow-y: auto;
-        }
-        .left-sidebar h2 {
-            /* Changed H2 color to Rich Brown */
-            color: var(--color-primary);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .feature {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        .feature img {
+        .auth-container {
+            background: var(--clr-bg-card);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
             width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-        .center-content {
-            flex: 2;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            width: 100%;
-            max-width: 400px;
-            animation: fadeIn 1s ease-out;
-        }
-        .right-sidebar {
-            flex: 1;
-            /* Changed sidebar background to Pale Cream */
-            background-color: var(--color-light-bg);
-            padding: 20px;
-            /* Changed border color to Rich Brown */
-            border-left: 2px solid var(--color-primary);
-            overflow-y: auto;
-        }
-        .right-sidebar h2 {
-            /* Changed H2 color to Rich Brown */
-            color: var(--color-primary);
+            max-width: 450px;
+            box-shadow: var(--shadow-hover);
+            border: 1px solid var(--clr-border);
             text-align: center;
-            margin-bottom: 20px;
         }
-        .ad {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .auth-container h2 {
+            font-size: 2rem;
+            color: var(--clr-accent-brown);
+            margin-bottom: 0.5rem;
         }
-        .ad:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+        .auth-container p.subtitle {
+            color: var(--clr-text-muted);
+            margin-bottom: 2rem;
         }
-        .ad img {
+
+        .input-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .input-group input {
             width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 10px;
+            padding: 1rem;
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
         }
-        input, button {
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--clr-accent-gold);
+            box-shadow: 0 0 0 3px rgba(192, 152, 88, 0.1);
+        }
+
+        .btn-full {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px;
+            padding: 1rem;
+            font-size: 1.1rem;
         }
-        button {
-            /* Changed button gradient to Gold/Mustard */
-            background: linear-gradient(135deg, var(--color-accent), #C5931C);
-            color: white;
+
+        .auth-links {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--clr-text-muted);
+        }
+
+        .auth-links span {
+            color: var(--clr-accent-gold-dark);
             cursor: pointer;
-            transition: background 0.3s ease;
-            font-weight: bold;
+            font-weight: 500;
+            transition: var(--transition);
         }
-        button:hover {
-            /* Changed button hover to Rich Brown gradient for contrast */
-            background: linear-gradient(135deg, var(--color-primary), #69320d);
-        }
-        .hidden {
-            display: none;
-        }
-        .link {
-            /* Changed link color to Rich Brown */
-            color: var(--color-link);
-            cursor: pointer;
+
+        .auth-links span:hover {
+            color: var(--clr-accent-brown);
             text-decoration: underline;
-            transition: color 0.3s ease;
         }
-        .link:hover {
-            /* Changed link hover color to Gold/Mustard */
-            color: var(--color-accent);
-        }
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @media (max-width: 768px) {
-            .main-container {
-                flex-direction: column;
-            }
-            .left-sidebar, .right-sidebar {
-                flex: none;
-                border: none;
-            }
-        }
+
+        .hidden { display: none; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to E-Food</h1>
-        <p>Delicious, fresh, home-cooked meals delivered to your door!</p>
-    </header>
+    
+    <!-- NAVIGATION (Minimal) -->
+    <nav class="navbar" style="position: absolute;">
+        <a href="index.html" class="nav-brand"><span>E-</span>Food</a>
+        <a href="index.html" class="btn btn-outline" style="padding: 0.5rem 1.5rem;">Back to Home</a>
+    </nav>
 
-    <div class="main-container">
-        <div class="left-sidebar">
-            <h2>Our Cooking Features</h2>
-            <div class="feature">
-                <img src="https://via.placeholder.com/300x150?text=Fresh+Ingredients" alt="Fresh Ingredients">
-                <h3>Fresh Ingredients</h3>
-                <p>We use only the freshest, locally sourced ingredients for every dish.</p>
-            </div>
-            <div class="feature">
-                <img src="https://via.placeholder.com/300x150?text=Homemade+Recipes" alt="Homemade Recipes">
-                <h3>Homemade Recipes</h3>
-                <p>Traditional recipes passed down through generations, made with love.</p>
-            </div>
-            <div class="feature">
-                <img src="https://via.placeholder.com/300x150?text=Custom+Orders" alt="Custom Orders">
-                <h3>Custom Orders</h3>
-                <p>Tailor your meal to your dietary needs and preferences.</p>
-            </div>
-        </div>
-
-        <div class="center-content">
-            <div class="container">
-                <div id="login-page">
-                    <h2>Login</h2>
-                    <input type="email" id="login-email" placeholder="Email" required>
+    <div class="login-page">
+        <div class="auth-container">
+            
+            <!-- Login Form -->
+            <div id="login-section">
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Please login to your account</p>
+                <div class="input-group">
+                    <input type="email" id="login-email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
                     <input type="password" id="login-password" placeholder="Password" required>
-                    <button onclick="login()">Login</button>
-                    <p class="link" onclick="showSignup()">Don't have an account? Sign up</p>
-                    <p class="link" onclick="showResetPassword()">Forgot password?</p>
                 </div>
+                <button class="btn btn-primary btn-full" onclick="login()">Login</button>
+                <div class="auth-links">
+                    Don't have an account? <span onclick="showSection('signup-section')">Sign up</span><br><br>
+                    <span onclick="showSection('reset-section')">Forgot Password?</span>
+                </div>
+            </div>
 
-                <div id="signup-page" class="hidden">
-                    <h2>Sign Up</h2>
-                    <input type="text" id="signup-name" placeholder="Name" required>
-                    <input type="email" id="signup-email" placeholder="Email" required>
+            <!-- Signup Form -->
+            <div id="signup-section" class="hidden">
+                <h2>Create Account</h2>
+                <p class="subtitle">Join our artisanal bakery</p>
+                <div class="input-group">
+                    <input type="text" id="signup-name" placeholder="Full Name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="signup-email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
                     <input type="password" id="signup-password" placeholder="Create Password" required>
-                    <button onclick="startSignup()">Next</button>
-                    <p class="link" onclick="showLogin()">Already have an account? Login</p>
                 </div>
-
-                <div id="email-confirm-page" class="hidden">
-                    <h2>Confirm Email</h2>
-                    <p>Please enter your email to proceed.</p>
-                    <input type="email" id="confirm-email" placeholder="Email" required>
-                    <button onclick="sendVerification()">Send Verification Code</button>
-                    <p class="link" onclick="showSignup()">Back to Signup</p>
-                </div>
-
-                <div id="verification-page" class="hidden">
-                    <h2>Verify Email</h2>
-                    <p>Enter the 6-digit code sent to your email.</p>
-                    <input type="text" id="verification-code" placeholder="Verification Code" maxlength="6" required>
-                    <button onclick="verifyCode()">Verify</button>
-                    <p class="link" onclick="resendCode()">Resend Code</p>
-                </div>
-
-                <div id="reset-password-page" class="hidden">
-                    <h2>Reset Password</h2>
-                    <label><input type="radio" name="reset-method" value="email" checked onclick="toggleResetMethod()"> Email</label>
-                    <label><input type="radio" name="reset-method" value="phone" onclick="toggleResetMethod()"> Phone</label>
-                    <div id="email-input">
-                        <input type="email" id="reset-email" placeholder="Email" required>
-                        <button onclick="resetPassword()">Send Reset Link</button>
-                    </div>
-                    <div id="phone-input" class="hidden">
-                        <input type="tel" id="reset-phone" placeholder="Phone Number" required>
-                        <button onclick="sendOTP()">Send OTP</button>
-                        <div id="otp-section" class="hidden">
-                            <input type="text" id="otp-code" placeholder="Enter OTP" required>
-                            <button onclick="verifyOTP()">Verify OTP</button>
-                        </div>
-                    </div>
-                    <p class="link" onclick="showLogin()">Back to Login</p>
-                </div>
-
-                <div id="welcome-page" class="hidden">
-                    <h2>Welcome!</h2>
-                    <p>You are logged in. Enjoy your homemade meals!</p>
-                    <button onclick="logout()">Logout</button>
+                <button class="btn btn-primary btn-full" onclick="signup()">Sign Up</button>
+                <div class="auth-links">
+                    Already have an account? <span onclick="showSection('login-section')">Login</span>
                 </div>
             </div>
-        </div>
 
-        <div class="right-sidebar">
-            <h2>Special Offers</h2>
-            <div class="ad">
-                <img src="https://via.placeholder.com/300x150?text=Fresh+Baked+Offer" alt="Fresh Baked Offer">
-                <h3>Free Dessert on First Order!</h3>
-                <p>Sign up today and get a complimentary treat with your first meal.</p>
+            <!-- Welcome/Logged In -->
+            <div id="welcome-section" class="hidden">
+                <h2>Welcome!</h2>
+                <p class="subtitle">You are successfully logged in.</p>
+                <button class="btn btn-primary btn-full" style="margin-bottom: 1rem;" onclick="window.location.href='index.html'">Go to Shop</button>
+                <button class="btn btn-outline btn-full" onclick="logout()">Logout</button>
             </div>
-            <div class="ad">
-                <img src="https://via.placeholder.com/300x150?text=Seasonal+Discount" alt="Seasonal Discount">
-                <h3>20% Off Seasonal Menu</h3>
-                <p>Enjoy our limited-time homemade specialties at a great price.</p>
+
+            <!-- Password Reset -->
+            <div id="reset-section" class="hidden">
+                <h2>Reset Password</h2>
+                <p class="subtitle">Let's get you back into your account</p>
+                <div class="input-group">
+                    <input type="email" id="reset-email" placeholder="Email Address" required>
+                </div>
+                <button class="btn btn-primary btn-full" onclick="reset()">Send Reset Link</button>
+                <div class="auth-links">
+                    Return to <span onclick="showSection('login-section')">Login</span>
+                </div>
             </div>
-            <div class="ad">
-                <img src="https://via.placeholder.com/300x150?text=Loyalty+Reward" alt="Loyalty Reward">
-                <h3>Loyalty Rewards Program</h3>
-                <p>Earn points with every order for future discounts and free meals!</p>
-            </div>
+
         </div>
     </div>
 
     <script>
-        // Simulate logged-in state (use localStorage for persistence)
         let isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        let userEmail = localStorage.getItem('userEmail') || '';
-        let userPassword = localStorage.getItem('userPassword') || ''; // Store password for simulation
-        let verificationCode = ''; // Simulated code (in real app, generate and send via email)
-        let otpCode = ''; // For phone OTP
-
-        // Show pages
-        function showLogin() {
-            hideAll();
-            document.getElementById('login-page').classList.remove('hidden');
+        
+        function showSection(id) {
+            document.querySelectorAll('.auth-container > div').forEach(div => div.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
         }
 
-        function showSignup() {
-            hideAll();
-            document.getElementById('signup-page').classList.remove('hidden');
-        }
-
-        function showEmailConfirm() {
-            hideAll();
-            document.getElementById('email-confirm-page').classList.remove('hidden');
-        }
-
-        function showVerification() {
-            hideAll();
-            document.getElementById('verification-page').classList.remove('hidden');
-        }
-
-        function showResetPassword() {
-            hideAll();
-            document.getElementById('reset-password-page').classList.remove('hidden');
-        }
-
-        function showWelcome() {
-            hideAll();
-            document.getElementById('welcome-page').classList.remove('hidden');
-        }
-
-        function hideAll() {
-            document.querySelectorAll('.container > div').forEach(div => div.classList.add('hidden'));
-        }
-
-        // Initialize: If already logged in, show welcome; else show login
         if (isLoggedIn) {
-            showWelcome();
+            showSection('welcome-section');
         } else {
-            showLogin();
+            showSection('login-section');
         }
 
-        // Login function
         function login() {
             const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            if (email && password) {
-                // Simulate login (in real app, check against backend)
-                if (email === userEmail && password === userPassword) {
-                    localStorage.setItem('isLoggedIn', 'true');
-                    isLoggedIn = true;
-                    showWelcome();
-                } else {
-                    alert('Invalid email or password.');
-                }
+            const pass = document.getElementById('login-password').value;
+            if(email && pass) {
+                localStorage.setItem('isLoggedIn', 'true');
+                showSection('welcome-section');
             } else {
-                alert('Please fill in all fields.');
+                alert("Please enter email and password");
             }
         }
 
-        // Start Signup
-        function startSignup() {
+        function signup() {
             const name = document.getElementById('signup-name').value;
             const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
-            if (name && email && password) {
-                userEmail = email;
-                userPassword = password; // Store password for simulation
-                localStorage.setItem('userEmail', userEmail);
-                localStorage.setItem('userPassword', userPassword);
-                showEmailConfirm();
-            } else {
-                alert('Please fill in all fields.');
-            }
-        }
-
-        // Send Verification (simulate)
-        function sendVerification() {
-            const email = document.getElementById('confirm-email').value;
-            if (email === userEmail) {
-                verificationCode = Math.floor(100000 + Math.random() * 900000).toString(); // Random 6-digit code
-                alert(`Verification code sent to ${email}: ${verificationCode}`); // In real app, send via email
-                showVerification();
-            } else {
-                alert('Email does not match.');
-            }
-        }
-
-        // Verify Code
-        function verifyCode() {
-            const code = document.getElementById('verification-code').value;
-            if (code === verificationCode) {
-                // Simulate account creation
+            const pass = document.getElementById('signup-password').value;
+            if(name && email && pass) {
                 localStorage.setItem('isLoggedIn', 'true');
-                isLoggedIn = true;
-                showWelcome();
+                showSection('welcome-section');
             } else {
-                alert('Invalid code.');
+                alert("Please fill all fields");
             }
         }
 
-        // Resend Code
-        function resendCode() {
-            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
-            alert(`New code sent: ${verificationCode}`);
-        }
-
-        // Toggle reset method
-        function toggleResetMethod() {
-            const emailInput = document.getElementById('email-input');
-            const phoneInput = document.getElementById('phone-input');
-            const emailRadio = document.querySelector('input[name="reset-method"][value="email"]');
-            const phoneRadio = document.querySelector('input[name="reset-method"][value="phone"]');
-            
-            if (emailRadio.checked) {
-                emailInput.classList.remove('hidden');
-                phoneInput.classList.add('hidden');
-            } else if (phoneRadio.checked) {
-                emailInput.classList.add('hidden');
-                phoneInput.classList.remove('hidden');
-                document.getElementById('otp-section').classList.add('hidden'); // Hide OTP section when switching
-            }
-        }
-
-        // Reset Password (Email)
-        function resetPassword() {
+        function reset() {
             const email = document.getElementById('reset-email').value;
-            if (email) {
-                alert(`Password reset link sent to ${email}.`); // In real app, send email
-                showLogin();
+            if(email) {
+                alert("Password reset link sent to " + email);
+                showSection('login-section');
             } else {
-                alert('Please enter your email.');
+                alert("Please enter your email");
             }
         }
 
-        // Send OTP (Phone)
-        function sendOTP() {
-            const phone = document.getElementById('reset-phone').value;
-            if (phone) {
-                otpCode = Math.floor(100000 + Math.random() * 900000).toString(); // Simulated OTP
-                alert(`OTP sent to ${phone}: ${otpCode}`); // In real app, send via SMS
-                document.getElementById('otp-section').classList.remove('hidden');
-            } else {
-                alert('Please enter your phone number.');
-            }
-        }
-
-        // Verify OTP
-        function verifyOTP() {
-            const otp = document.getElementById('otp-code').value;
-            if (otp === otpCode) {
-                alert('OTP verified! You can now reset your password.');
-                // In a real app, proceed to password reset form
-                showLogin();
-            } else {
-                alert('Invalid OTP. Please try again.');
-            }
-        }
-
-        // Logout
         function logout() {
             localStorage.removeItem('isLoggedIn');
-            localStorage.removeItem('userEmail');
-            localStorage.removeItem('userPassword'); // Clear stored password
-            isLoggedIn = false;
-            userEmail = '';
-            userPassword = '';
-            showLogin();
+            showSection('login-section');
         }
     </script>
 </body>

@@ -1,0 +1,218 @@
+/* MEGAMENU STYLES */
+.has-megamenu {
+    position: static !important; /* Required for full width megamenu if nav is relative */
+}
+.megamenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 1000;
+    padding: 30px 50px;
+    border-top: 1px solid #eee;
+    animation: fadeIn 0.3s ease;
+}
+.has-megamenu:hover .megamenu {
+    display: flex;
+    gap: 30px;
+}
+.mega-left {
+    flex: 0 0 200px;
+    border-right: 1px solid #eee;
+    padding-right: 20px;
+}
+.mega-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.mega-left li {
+    font-size: 0.95rem;
+    color: #444;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.mega-left li:hover {
+    color: var(--clr-primary, #ff4d4d);
+    font-weight: bold;
+    transform: translateX(5px);
+}
+.mega-center {
+    flex: 1;
+}
+.mega-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.mega-card {
+    text-align: center;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+    background: #f9f9f9;
+}
+.mega-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transform: translateY(-5px);
+}
+.mega-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+.mega-card p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 5px 0;
+}
+.mega-card span {
+    color: var(--clr-primary, #ff4d4d);
+    font-weight: bold;
+}
+.mega-card button {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin-top: 10px;
+    background: var(--clr-primary, #ff4d4d);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.mega-right {
+    flex: 0 0 300px;
+}
+.mega-banner {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    padding: 40px 20px;
+    border-radius: 12px;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.mega-banner h4 {
+    font-size: 1.8rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+.mega-banner button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: #fff;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* SEARCH DROPDOWN */
+.search-container {
+    position: relative;
+}
+.search-dropdown {
+    display: none;
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 100;
+    padding: 15px;
+}
+.search-container.active .search-dropdown {
+    display: block;
+}
+.search-group h5 {
+    color: #888;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.search-item {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.search-item:hover {
+    background: #f5f5f5;
+}
+.search-item i {
+    color: #ccc;
+}
+
+/* CART HOVER PREVIEW */
+.cart-hover-container {
+    position: relative;
+}
+.cart-dropdown {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    width: 320px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 20px;
+    cursor: default;
+}
+.cart-hover-container:hover .cart-dropdown {
+    display: block;
+}
+.cart-dropdown h4 {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.cart-hover-items {
+    max-height: 250px;
+    overflow-y: auto;
+}
+.cart-hover-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+.cart-hover-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.cart-hover-footer {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 10px;
+}
+.cart-hover-footer button {
+    width: 100%;
+    padding: 10px;
+    background: var(--clr-primary, #ff4d4d);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
